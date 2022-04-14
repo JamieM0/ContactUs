@@ -329,6 +329,7 @@
             this.btnSaveOnly.TabIndex = 11;
             this.btnSaveOnly.Text = "Save";
             this.btnSaveOnly.UseVisualStyleBackColor = true;
+            this.btnSaveOnly.Click += new System.EventHandler(this.btnSaveOnly_Click);
             // 
             // btnSaveAndReturn
             // 
@@ -339,6 +340,7 @@
             this.btnSaveAndReturn.TabIndex = 12;
             this.btnSaveAndReturn.Text = "Save and Return to Main Menu";
             this.btnSaveAndReturn.UseVisualStyleBackColor = true;
+            this.btnSaveAndReturn.Click += new System.EventHandler(this.btnSaveAndReturn_Click);
             // 
             // btnLogout
             // 

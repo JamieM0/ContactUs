@@ -12,3 +12,4 @@ C:\Users\Jamie\Documents\GitHub\ContactUs\ContactUs\ContactUs\obj\Debug\ContactU
 C:\Users\Jamie\Documents\GitHub\ContactUs\ContactUs\ContactUs\obj\Debug\ContactUs.Login.resources
 C:\Users\Jamie\Documents\GitHub\ContactUs\ContactUs\ContactUs\obj\Debug\ContactUs.Register.resources
 C:\Users\Jamie\Documents\GitHub\ContactUs\ContactUs\ContactUs\obj\Debug\ContactUs.connect.resources
+C:\Users\Jamie\Documents\GitHub\ContactUs\ContactUs\ContactUs\obj\Debug\ContactUs.ContactList.resources

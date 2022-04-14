@@ -40,5 +40,8 @@ namespace ContactUs
         //public string textColour;
         //public string textColour_encrypted;
         public int fromwheretohelpx = 0;
+        //public string inDir = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+        //public string locationPath = ($@"{inDir}\ContactUsProgram");
+        //public string filePath = /*@*/$@"{locationPath}\users.txt";/*\\*/
     }
 }

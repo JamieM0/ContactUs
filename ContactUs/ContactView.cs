@@ -14,11 +14,13 @@ namespace ContactUs
     public partial class ContactView : Form
     {
         bool IsNewContact = true;
+        bool IsSaved = false;
         
         public ContactView()
         {
             InitializeComponent();
             CenterToScreen();
+            LoadContact();
         }
 
         private void lbFName_Click(object sender, EventArgs e)
@@ -38,17 +40,20 @@ namespace ContactUs
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            //MessageBoxButtons.YesNo
-            //MessageBox.Show();
-            DialogResult dialogResult = MessageBox.Show("If you have unsaved progress, click No below to return & save it.\r\n Any unsaved data will be lost.\r\nDo you want to continue exiting?", "Are you sure you want to exit?", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
+            if (!IsSaved)
             {
-                //this.Hide();
-                System.Windows.Forms.Application.Exit();
-            }
-            else if (dialogResult == DialogResult.No)
-            {
-                //Hide();
+                //MessageBoxButtons.YesNo
+                //MessageBox.Show();
+                DialogResult dialogResult = MessageBox.Show("If you have unsaved progress, click No below to return & save it.\r\n Any unsaved data will be lost.\r\nDo you want to continue exiting?", "Are you sure you want to exit?", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    //this.Hide();
+                    System.Windows.Forms.Application.Exit();
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    //Hide();
+                }
             }
         }
 
@@ -98,7 +103,8 @@ namespace ContactUs
             }
 
             titleUpdater();
-            
+
+            IsSaved = false;
         }
 
         private void txtLName_TextChanged(object sender, EventArgs e)
@@ -116,6 +122,7 @@ namespace ContactUs
 
             titleUpdater();
             
+            IsSaved = false;
         }
 
         private void rtxtEmailAddresses_Leave(object sender, EventArgs e)
@@ -124,6 +131,8 @@ namespace ContactUs
             {
                 MessageBox.Show("The email you have entered is invalid, you can still continue if you like.", "Warning: Invalid Email");
             }
+
+            IsSaved = false;
         }
 
         private void rtxtPhoneNumbers_TextChanged(object sender, EventArgs e)
@@ -137,6 +146,7 @@ namespace ContactUs
             //{
             //    MessageBox.Show("The email you have entered is invalid, you can still continue if you like.", "Warning: Invalid Email");
             //}
+            IsSaved = false;
         }
 
         private void txtFName_TextChanged(object sender, EventArgs e)
@@ -179,11 +189,14 @@ namespace ContactUs
         private void btnSaveOnly_Click(object sender, EventArgs e)
         {
             SaveFull();
+            IsSaved = false;
         }
 
         private void btnSaveAndReturn_Click(object sender, EventArgs e)
         {
             SaveFull();
+            IsSaved = false;
+            new ContactList().Show();
         }
 
         private void SaveFull()
@@ -191,9 +204,10 @@ namespace ContactUs
             string userlinenumber = connect.clocal.userlinenumber.ToString();
             var inDir = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
             string locationPath = ($@"{inDir}\ContactUsProgram");
-            string filePath = /*@*/$@"{locationPath}\contacts_{userlinenumber}.txt";/*\\*/
+            string filePath = /*@*/$@"{locationPath}\contacts_{userlinenumber}.conf";/*\\*/
             string fileName = filePath;
 
+            string contactimage = pbContactPicture.ImageLocation;
             string fName = txtFName.Text;
             string lName = txtLName.Text;
             string[] emails = rtxtEmailAddresses.Text.Split(new string[] { Environment.NewLine }, StringSplitOptions.None/*Environment.NewLine*//*, StringSplitOptions.RemoveEmptyEntries*/);
@@ -219,53 +233,109 @@ namespace ContactUs
                     aFile = new FileStream(fileName, FileMode.Append, FileAccess.Write);
                 }
 
-                //Encrypt all the variables (Updated from last time, see commit)
-                string pForename = connect.clocal.pForename;
-                string pSurname = connect.clocal.pSurname;
-                string DateOfBirth = connect.clocal.DateOfBirth.ToShortDateString();
-                char pGender = connect.clocal.gender;
-                string YearGroup = connect.clocal.YearGroup;
-                double avgSkiTime = connect.clocal.avgSkiTime;
-                int QuizScore = connect.clocal.QuizScore;
-                string skiAbility = connect.clocal.skiAbility;
-
-                string pGender_string = connect.clocal.gender.ToString();
-                //string avgSkiTime_string = connect.clocal.avgSkiTime.ToString();
-                //string QuizScore_string = connect.clocal.QuizScore.ToString();
-
-                //string encodedStr = Convert.ToBase64String(Encoding.UTF8.GetBytes("inputStr"));
-
-                //string pForename_base64 = Convert.ToBase64String(Encoding.UTF8.GetBytes(/*key, */pForename));
-                //string pSurname_base64 = Convert.ToBase64String(Encoding.UTF8.GetBytes(/*key, */pSurname));
-                //string DateOfBirth_base64 = Convert.ToBase64String(Encoding.UTF8.GetBytes(/*key, */DateOfBirth));
-                //string pGender_base64 = Convert.ToBase64String(Encoding.UTF8.GetBytes(/*key, */pGender_string));
-                //string YearGroup_base64 = Convert.ToBase64String(Encoding.UTF8.GetBytes(/*key, */YearGroup));
-                //string avgSkiTime_base64 = Convert.ToBase64String(Encoding.UTF8.GetBytes(/*key, */avgSkiTime_string));
-                //string QuizScore_base64 = Convert.ToBase64String(Encoding.UTF8.GetBytes(/*key, */QuizScore_string));
-                //string skiAbility_base64 = Convert.ToBase64String(Encoding.UTF8.GetBytes(/*key, */skiAbility));
-
                 //Create a new connection to the file writer
                 sw = new StreamWriter(aFile);
 
                 //Write the student details to the file with each piece of data separated with the '~' symbol.
-                sw.WriteLine($"{pForename}~{pSurname}~{DateOfBirth}~{pGender}" +
-                    $"~{YearGroup}~{avgSkiTime}~{QuizScore}~{skiAbility}");
+                sw.WriteLine($"{contactimage}~{fName}~{lName}~{emails}~{phoneNumbers}" +
+                    $"~{birthdate}~{otherdate}~{otherdatelabel}~{notes}~{address}");
 
                 //Close the connection to the file
                 sw.Close();
                 aFile.Close();
 
-                MessageBox.Show("Pupils details have been saved successfully..", "Successful");
-                btnDashboardGoTo.Enabled = true;
-                btnSavePupilDetails.Enabled = false;
-                btnOverviewGoTo.Enabled = true;
+                MessageBox.Show("Contact information has been saved successfully!", "Successful");
             }
 
             catch (Exception ex)
             {
                 //If the file cannot be found give the user a suitable message
-                MessageBox.Show(ex.Message, "Pupils details have not been saved successfully, please try again. If this error persists, please file a bug report from the Dashboard.");
+                MessageBox.Show(ex.Message, "Could not save Contact Information! \r\n\r\nError code: Invalid Contact Save \r\n\r\nPlease see the Github page and make an issue if there isn't one \r\nalready made with this problem, and mark it with the 'Bug / Problem' tag.");
             }
+        }
+
+        private void btnReturnToMainMenu_Click(object sender, EventArgs e)
+        {
+            Hide();
+            new Test().Show();
+        }
+
+        private void LoadContact()
+        {
+            string userlinenumber = connect.clocal.userlinenumber.ToString();
+            var inDir = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+            string locationPath = ($@"{inDir}\ContactUsProgram");
+            string filePath = /*@*/$@"{locationPath}\contacts_{userlinenumber}.conf";/*\\*/
+            string fileName = filePath;
+            if (File.Exists($@"{locationPath}\contacts_{userlinenumber}.conf"))
+            {
+                //Read in all the details of the text file
+                var allPupils = File.ReadAllLines($@"{locationPath}\contacts_{userlinenumber}.conf");
+
+                //Check if players exist in the text file
+                if (allPupils.Length > 0)
+                {
+                    //Loop over each player details
+                    foreach (var pupil in allPupils)
+                    {
+                        //Add the player name and score to the datagrid
+                        var splitDetails = pupil.Split('~');
+                        var unsplitDetails = new string[splitDetails.Length];
+                        pbContactPicture.ImageLocation = splitDetails[0];
+                        txtFName.Text = splitDetails[1];
+                        txtLName.Text = splitDetails[2];
+                        rtxtEmailAddresses.Text = splitDetails[3];
+                        rtxtPhoneNumbers.Text = splitDetails[4];
+                        dtpBirthdate.Value = Convert.ToDateTime(splitDetails[5]);
+                        dtpOtherDate.Value = Convert.ToDateTime(splitDetails[6]);
+                        txtOtherDate.Text = splitDetails[7];
+                        rtxtNotes.Text = splitDetails[8];
+                        rtxtAddress.Text = splitDetails[9];
+                        //string unsplitDetails = classAesOperation.DecryptString(key, splitDetails[0]);
+                        //dgPupils.Rows.Add(unsplitDetails[0], unsplitDetails[1], Convert.ToString(unsplitDetails[3]), Convert.ToString(unsplitDetails[2]), Convert.ToInt32(unsplitDetails[4]),
+                        //    Convert.ToInt32(unsplitDetails[5]), Convert.ToInt32(unsplitDetails[6]), unsplitDetails[7]);
+
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No pupils have been found.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("File cannot be found. Remember that the Overview data (Data on the pupils) is stored on a per user basis. If you've already saved a pupil on this system, you aren't on the correct account. All data is encrypted so if this is the case, there's nothing that can be done unless you know the details of the other account. When you click 'OK', the Overview screen will be shown empty.");
+            }
+        }
+
+        private void dtpBirthdate_Leave(object sender, EventArgs e)
+        {
+            IsSaved = false;
+        }
+
+        private void txtOtherDate_Leave(object sender, EventArgs e)
+        {
+            IsSaved = false;
+        }
+
+        private void dtpOtherDate_Leave(object sender, EventArgs e)
+        {
+            IsSaved = false;
+        }
+
+        private void rtxtNotes_Leave(object sender, EventArgs e)
+        {
+            IsSaved = false;
+        }
+
+        private void rtxtAddress_Leave(object sender, EventArgs e)
+        {
+            IsSaved = false;
+        }
+
+        private void btnChangeContactImage_Leave(object sender, EventArgs e)
+        {
+            IsSaved = false;
         }
     }
 }

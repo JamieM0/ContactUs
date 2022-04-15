@@ -58,6 +58,7 @@
             this.btnSaveOnly = new System.Windows.Forms.Button();
             this.btnSaveAndReturn = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
+            this.btnReturnToMainMenu = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbContactPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSendMail)).BeginInit();
             this.SuspendLayout();
@@ -134,6 +135,7 @@
             this.btnChangeContactImage.Text = "Change contact image";
             this.btnChangeContactImage.UseVisualStyleBackColor = true;
             this.btnChangeContactImage.Click += new System.EventHandler(this.btnChangeContactImage_Click);
+            this.btnChangeContactImage.Leave += new System.EventHandler(this.btnChangeContactImage_Leave);
             // 
             // lbEmailNumber
             // 
@@ -200,9 +202,9 @@
             // btnExit
             // 
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(1052, 13);
+            this.btnExit.Location = new System.Drawing.Point(1072, 13);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(170, 56);
+            this.btnExit.Size = new System.Drawing.Size(150, 56);
             this.btnExit.TabIndex = 13;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -236,6 +238,7 @@
             this.rtxtAddress.Size = new System.Drawing.Size(483, 150);
             this.rtxtAddress.TabIndex = 8;
             this.rtxtAddress.Text = "";
+            this.rtxtAddress.Leave += new System.EventHandler(this.rtxtAddress_Leave);
             // 
             // lbBirthdate
             // 
@@ -254,6 +257,7 @@
             this.dtpBirthdate.Name = "dtpBirthdate";
             this.dtpBirthdate.Size = new System.Drawing.Size(276, 43);
             this.dtpBirthdate.TabIndex = 5;
+            this.dtpBirthdate.Leave += new System.EventHandler(this.dtpBirthdate_Leave);
             // 
             // dtpOtherDate
             // 
@@ -262,6 +266,7 @@
             this.dtpOtherDate.Name = "dtpOtherDate";
             this.dtpOtherDate.Size = new System.Drawing.Size(276, 43);
             this.dtpOtherDate.TabIndex = 6;
+            this.dtpOtherDate.Leave += new System.EventHandler(this.dtpOtherDate_Leave);
             // 
             // lbOtherDate
             // 
@@ -290,6 +295,7 @@
             this.txtOtherDate.Name = "txtOtherDate";
             this.txtOtherDate.Size = new System.Drawing.Size(276, 43);
             this.txtOtherDate.TabIndex = 7;
+            this.txtOtherDate.Leave += new System.EventHandler(this.txtOtherDate_Leave);
             // 
             // lbNotes
             // 
@@ -309,6 +315,7 @@
             this.rtxtNotes.Size = new System.Drawing.Size(411, 142);
             this.rtxtNotes.TabIndex = 9;
             this.rtxtNotes.Text = "";
+            this.rtxtNotes.Leave += new System.EventHandler(this.rtxtNotes_Leave);
             // 
             // lbTitle
             // 
@@ -323,9 +330,9 @@
             // btnSaveOnly
             // 
             this.btnSaveOnly.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaveOnly.Location = new System.Drawing.Point(819, 13);
+            this.btnSaveOnly.Location = new System.Drawing.Point(739, 13);
             this.btnSaveOnly.Name = "btnSaveOnly";
-            this.btnSaveOnly.Size = new System.Drawing.Size(170, 56);
+            this.btnSaveOnly.Size = new System.Drawing.Size(150, 56);
             this.btnSaveOnly.TabIndex = 11;
             this.btnSaveOnly.Text = "Save";
             this.btnSaveOnly.UseVisualStyleBackColor = true;
@@ -334,9 +341,9 @@
             // btnSaveAndReturn
             // 
             this.btnSaveAndReturn.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaveAndReturn.Location = new System.Drawing.Point(819, 86);
+            this.btnSaveAndReturn.Location = new System.Drawing.Point(739, 86);
             this.btnSaveAndReturn.Name = "btnSaveAndReturn";
-            this.btnSaveAndReturn.Size = new System.Drawing.Size(403, 56);
+            this.btnSaveAndReturn.Size = new System.Drawing.Size(483, 56);
             this.btnSaveAndReturn.TabIndex = 12;
             this.btnSaveAndReturn.Text = "Save and Return to Main Menu";
             this.btnSaveAndReturn.UseVisualStyleBackColor = true;
@@ -353,11 +360,23 @@
             this.btnLogout.UseVisualStyleBackColor = true;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
+            // btnReturnToMainMenu
+            // 
+            this.btnReturnToMainMenu.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReturnToMainMenu.Location = new System.Drawing.Point(895, 13);
+            this.btnReturnToMainMenu.Name = "btnReturnToMainMenu";
+            this.btnReturnToMainMenu.Size = new System.Drawing.Size(171, 56);
+            this.btnReturnToMainMenu.TabIndex = 28;
+            this.btnReturnToMainMenu.Text = "Main Menu";
+            this.btnReturnToMainMenu.UseVisualStyleBackColor = true;
+            this.btnReturnToMainMenu.Click += new System.EventHandler(this.btnReturnToMainMenu_Click);
+            // 
             // ContactView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1234, 711);
+            this.Controls.Add(this.btnReturnToMainMenu);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.btnSaveAndReturn);
             this.Controls.Add(this.btnSaveOnly);
@@ -428,6 +447,7 @@
         private System.Windows.Forms.Button btnSaveOnly;
         private System.Windows.Forms.Button btnSaveAndReturn;
         private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.Button btnReturnToMainMenu;
     }
 }
 

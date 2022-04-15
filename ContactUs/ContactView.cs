@@ -207,16 +207,17 @@ namespace ContactUs
             string filePath = /*@*/$@"{locationPath}\contacts_{userlinenumber}.conf";/*\\*/
             string fileName = filePath;
 
-            string contactimage = pbContactPicture.ImageLocation;
+            string contactimage = /*pbContactPicture.ImageLocation*/"example.jpg";
             string fName = txtFName.Text;
             string lName = txtLName.Text;
-            string[] emails = rtxtEmailAddresses.Text.Split(new string[] { Environment.NewLine }, StringSplitOptions.None/*Environment.NewLine*//*, StringSplitOptions.RemoveEmptyEntries*/);
-            string[] phoneNumbers = rtxtPhoneNumbers.Text.Split(new string[] { Environment.NewLine }, StringSplitOptions.None/*Environment.NewLine*//*, StringSplitOptions.RemoveEmptyEntries*/);
+            string/*[]*/ emails = rtxtEmailAddresses.Text/*.Split(new string[] { Environment.NewLine }, StringSplitOptions.None*//*Environment.NewLine*//*, StringSplitOptions.RemoveEmptyEntries*//*)*/;
+            string/*[]*/ phoneNumbers = rtxtPhoneNumbers.Text/*.Split(new string[] { Environment.NewLine }, StringSplitOptions.None*//*Environment.NewLine*//*, StringSplitOptions.RemoveEmptyEntries*//*)*/;
             DateTime birthdate = dtpBirthdate.Value;
             DateTime otherdate = dtpOtherDate.Value;
             string otherdatelabel = txtOtherDate.Text;
             string notes = rtxtNotes.Text;
             string address = rtxtAddress.Text;
+            int relativeID = 0;
 
             FileStream aFile;
             StreamWriter sw;
@@ -226,23 +227,27 @@ namespace ContactUs
                 if (!File.Exists(fileName))
                 {
                     aFile = new FileStream(fileName, FileMode.Create, FileAccess.Write);
+                    relativeID = 0;
                 }
                 else
                 {
                     //If the file already exists, then open it in append mode.
                     aFile = new FileStream(fileName, FileMode.Append, FileAccess.Write);
+                    relativeID = File.ReadLines(fileName).Count();
                 }
 
                 //Create a new connection to the file writer
                 sw = new StreamWriter(aFile);
 
                 //Write the student details to the file with each piece of data separated with the '~' symbol.
-                sw.WriteLine($"{contactimage}~{fName}~{lName}~{emails}~{phoneNumbers}" +
+                sw.WriteLine($"{relativeID}~{contactimage}~{fName}~{lName}~{emails}~{phoneNumbers}" +
                     $"~{birthdate}~{otherdate}~{otherdatelabel}~{notes}~{address}");
 
                 //Close the connection to the file
                 sw.Close();
                 aFile.Close();
+                aFile.Dispose();
+                sw.Dispose();
 
                 MessageBox.Show("Contact information has been saved successfully!", "Successful");
             }
@@ -252,6 +257,9 @@ namespace ContactUs
                 //If the file cannot be found give the user a suitable message
                 MessageBox.Show(ex.Message, "Could not save Contact Information! \r\n\r\nError code: Invalid Contact Save \r\n\r\nPlease see the Github page and make an issue if there isn't one \r\nalready made with this problem, and mark it with the 'Bug / Problem' tag.");
             }
+
+            //sw.Close();
+            //aFile.Close();
         }
 
         private void btnReturnToMainMenu_Click(object sender, EventArgs e)
@@ -269,38 +277,42 @@ namespace ContactUs
             string fileName = filePath;
             if (File.Exists($@"{locationPath}\contacts_{userlinenumber}.conf"))
             {
-                //Read in all the details of the text file
-                var allPupils = File.ReadAllLines($@"{locationPath}\contacts_{userlinenumber}.conf");
+                //Read in all the details of the conf file
+                var allContacts = File.ReadAllLines($@"{locationPath}\contacts_{userlinenumber}.conf");
 
-                //Check if players exist in the text file
-                if (allPupils.Length > 0)
+                //Check if contacts exist in the conf file
+                if (allContacts.Length > 0)
                 {
                     //Loop over each player details
-                    foreach (var pupil in allPupils)
+                    foreach (var contact in allContacts)
                     {
-                        //Add the player name and score to the datagrid
-                        var splitDetails = pupil.Split('~');
+                        //Get the contact info
+                        var splitDetails = contact.Split('~');
                         var unsplitDetails = new string[splitDetails.Length];
-                        pbContactPicture.ImageLocation = splitDetails[0];
-                        txtFName.Text = splitDetails[1];
-                        txtLName.Text = splitDetails[2];
-                        rtxtEmailAddresses.Text = splitDetails[3];
-                        rtxtPhoneNumbers.Text = splitDetails[4];
-                        dtpBirthdate.Value = Convert.ToDateTime(splitDetails[5]);
-                        dtpOtherDate.Value = Convert.ToDateTime(splitDetails[6]);
-                        txtOtherDate.Text = splitDetails[7];
-                        rtxtNotes.Text = splitDetails[8];
-                        rtxtAddress.Text = splitDetails[9];
+                        pbContactPicture.ImageLocation = splitDetails[1];
+                        txtFName.Text = splitDetails[2];
+                        txtLName.Text = splitDetails[3];
+                        rtxtEmailAddresses.Text = splitDetails[4];
+                        rtxtPhoneNumbers.Text = splitDetails[5];
+                        dtpBirthdate.Value = Convert.ToDateTime(splitDetails[6]);
+                        dtpOtherDate.Value = Convert.ToDateTime(splitDetails[7]);
+                        txtOtherDate.Text = splitDetails[8];
+                        rtxtNotes.Text = splitDetails[9];
+                        rtxtAddress.Text = splitDetails[10];
                         //string unsplitDetails = classAesOperation.DecryptString(key, splitDetails[0]);
                         //dgPupils.Rows.Add(unsplitDetails[0], unsplitDetails[1], Convert.ToString(unsplitDetails[3]), Convert.ToString(unsplitDetails[2]), Convert.ToInt32(unsplitDetails[4]),
                         //    Convert.ToInt32(unsplitDetails[5]), Convert.ToInt32(unsplitDetails[6]), unsplitDetails[7]);
 
                     }
+
+                    //Dispose();
                 }
                 else
                 {
                     MessageBox.Show("No pupils have been found.");
                 }
+
+                //fileName.Close();
             }
             else
             {

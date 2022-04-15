@@ -149,7 +149,7 @@
             // 
             // rtxtEmailAddresses
             // 
-            this.rtxtEmailAddresses.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtxtEmailAddresses.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtxtEmailAddresses.Location = new System.Drawing.Point(288, 365);
             this.rtxtEmailAddresses.Name = "rtxtEmailAddresses";
             this.rtxtEmailAddresses.Size = new System.Drawing.Size(423, 135);
@@ -179,7 +179,7 @@
             // 
             // rtxtPhoneNumbers
             // 
-            this.rtxtPhoneNumbers.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtxtPhoneNumbers.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtxtPhoneNumbers.Location = new System.Drawing.Point(288, 531);
             this.rtxtPhoneNumbers.Name = "rtxtPhoneNumbers";
             this.rtxtPhoneNumbers.Size = new System.Drawing.Size(282, 82);
@@ -232,7 +232,7 @@
             // 
             // rtxtAddress
             // 
-            this.rtxtAddress.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtxtAddress.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtxtAddress.Location = new System.Drawing.Point(739, 161);
             this.rtxtAddress.Name = "rtxtAddress";
             this.rtxtAddress.Size = new System.Drawing.Size(483, 150);
@@ -262,7 +262,7 @@
             // dtpOtherDate
             // 
             this.dtpOtherDate.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpOtherDate.Location = new System.Drawing.Point(771, 576);
+            this.dtpOtherDate.Location = new System.Drawing.Point(839, 529);
             this.dtpOtherDate.Name = "dtpOtherDate";
             this.dtpOtherDate.Size = new System.Drawing.Size(276, 43);
             this.dtpOtherDate.TabIndex = 6;
@@ -272,7 +272,7 @@
             // 
             this.lbOtherDate.AutoSize = true;
             this.lbOtherDate.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbOtherDate.Location = new System.Drawing.Point(576, 576);
+            this.lbOtherDate.Location = new System.Drawing.Point(576, 528);
             this.lbOtherDate.Name = "lbOtherDate";
             this.lbOtherDate.Size = new System.Drawing.Size(180, 45);
             this.lbOtherDate.TabIndex = 20;
@@ -282,7 +282,7 @@
             // 
             this.lbOtherDateLabel.AutoSize = true;
             this.lbOtherDateLabel.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbOtherDateLabel.Location = new System.Drawing.Point(508, 643);
+            this.lbOtherDateLabel.Location = new System.Drawing.Point(576, 568);
             this.lbOtherDateLabel.Name = "lbOtherDateLabel";
             this.lbOtherDateLabel.Size = new System.Drawing.Size(257, 45);
             this.lbOtherDateLabel.TabIndex = 22;
@@ -290,10 +290,10 @@
             // 
             // txtOtherDate
             // 
-            this.txtOtherDate.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtOtherDate.Location = new System.Drawing.Point(771, 649);
+            this.txtOtherDate.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtOtherDate.Location = new System.Drawing.Point(839, 578);
             this.txtOtherDate.Name = "txtOtherDate";
-            this.txtOtherDate.Size = new System.Drawing.Size(276, 43);
+            this.txtOtherDate.Size = new System.Drawing.Size(276, 35);
             this.txtOtherDate.TabIndex = 7;
             this.txtOtherDate.Leave += new System.EventHandler(this.txtOtherDate_Leave);
             // 
@@ -309,10 +309,10 @@
             // 
             // rtxtNotes
             // 
-            this.rtxtNotes.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtxtNotes.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtxtNotes.Location = new System.Drawing.Point(811, 401);
             this.rtxtNotes.Name = "rtxtNotes";
-            this.rtxtNotes.Size = new System.Drawing.Size(411, 142);
+            this.rtxtNotes.Size = new System.Drawing.Size(411, 99);
             this.rtxtNotes.TabIndex = 9;
             this.rtxtNotes.Text = "";
             this.rtxtNotes.Leave += new System.EventHandler(this.rtxtNotes_Leave);

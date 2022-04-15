@@ -59,6 +59,7 @@
             this.btnSaveAndReturn = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnReturnToMainMenu = new System.Windows.Forms.Button();
+            this.btnNewForm = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbContactPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSendMail)).BeginInit();
             this.SuspendLayout();
@@ -371,11 +372,23 @@
             this.btnReturnToMainMenu.UseVisualStyleBackColor = true;
             this.btnReturnToMainMenu.Click += new System.EventHandler(this.btnReturnToMainMenu_Click);
             // 
+            // btnNewForm
+            // 
+            this.btnNewForm.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNewForm.Location = new System.Drawing.Point(872, 636);
+            this.btnNewForm.Name = "btnNewForm";
+            this.btnNewForm.Size = new System.Drawing.Size(165, 56);
+            this.btnNewForm.TabIndex = 29;
+            this.btnNewForm.Text = "New form";
+            this.btnNewForm.UseVisualStyleBackColor = true;
+            this.btnNewForm.Click += new System.EventHandler(this.btnNewForm_Click);
+            // 
             // ContactView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1234, 711);
+            this.Controls.Add(this.btnNewForm);
             this.Controls.Add(this.btnReturnToMainMenu);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.btnSaveAndReturn);
@@ -448,6 +461,7 @@
         private System.Windows.Forms.Button btnSaveAndReturn;
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.Button btnReturnToMainMenu;
+        private System.Windows.Forms.Button btnNewForm;
     }
 }
 

@@ -20,7 +20,12 @@ namespace ContactUs
         {
             InitializeComponent();
             CenterToScreen();
-            LoadContact();
+            DialogResult dialogResult = MessageBox.Show("Load contact 1?", "Load contact 1?", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                LoadContact();
+            }
+            
         }
 
         private void lbFName_Click(object sender, EventArgs e)
@@ -227,19 +232,19 @@ namespace ContactUs
                 if (!File.Exists(fileName))
                 {
                     aFile = new FileStream(fileName, FileMode.Create, FileAccess.Write);
-                    relativeID = 0;
+                    //relativeID = 0;
                 }
                 else
                 {
                     //If the file already exists, then open it in append mode.
                     aFile = new FileStream(fileName, FileMode.Append, FileAccess.Write);
-                    relativeID = File.ReadLines(fileName).Count();
+                    //relativeID = File.ReadLines(fileName).Count();
                 }
 
                 //Create a new connection to the file writer
                 sw = new StreamWriter(aFile);
 
-                //Write the student details to the file with each piece of data separated with the '~' symbol.
+                //Write the contacr details to the file with each piece of data separated with the '~' symbol.
                 sw.WriteLine($"{relativeID}~{contactimage}~{fName}~{lName}~{emails}~{phoneNumbers}" +
                     $"~{birthdate}~{otherdate}~{otherdatelabel}~{notes}~{address}");
 
@@ -248,6 +253,9 @@ namespace ContactUs
                 aFile.Close();
                 aFile.Dispose();
                 sw.Dispose();
+                aFile.Flush();
+                sw.Flush();
+                //aFile.
 
                 MessageBox.Show("Contact information has been saved successfully!", "Successful");
             }
@@ -348,6 +356,12 @@ namespace ContactUs
         private void btnChangeContactImage_Leave(object sender, EventArgs e)
         {
             IsSaved = false;
+        }
+
+        private void btnNewForm_Click(object sender, EventArgs e)
+        {
+            Hide();
+            new ContactView().Show();
         }
     }
 }

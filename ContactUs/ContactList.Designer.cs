@@ -46,6 +46,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "ContactList";
             this.Text = "Contact List";
+            this.Load += new System.EventHandler(this.ContactList_Load);
             this.ResumeLayout(false);
 
         }

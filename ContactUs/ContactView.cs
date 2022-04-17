@@ -273,7 +273,7 @@ namespace ContactUs
         private void btnReturnToMainMenu_Click(object sender, EventArgs e)
         {
             Hide();
-            new Test().Show();
+            new ContactList().Show();
         }
 
         private void LoadContact()

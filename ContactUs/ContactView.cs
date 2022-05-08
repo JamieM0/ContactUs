@@ -296,7 +296,7 @@ namespace ContactUs
                     {
                         //Get the contact info
                         var splitDetails = contact.Split('~');
-                        var unsplitDetails = new string[splitDetails.Length];
+                        //var unsplitDetails = new string[splitDetails.Length];
                         pbContactPicture.ImageLocation = splitDetails[1];
                         txtFName.Text = splitDetails[2];
                         txtLName.Text = splitDetails[3];
@@ -317,14 +317,17 @@ namespace ContactUs
                 }
                 else
                 {
-                    MessageBox.Show("No pupils have been found.");
+                    
+                    MessageBox.Show("No contacts have been found. Error code: CV-NF", "No contacts found.",MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
                 //fileName.Close();
             }
             else
             {
-                MessageBox.Show("File cannot be found. Remember that the Overview data (Data on the pupils) is stored on a per user basis. If you've already saved a pupil on this system, you aren't on the correct account. All data is encrypted so if this is the case, there's nothing that can be done unless you know the details of the other account. When you click 'OK', the Overview screen will be shown empty.");
+                MessageBox.Show("Contacts file cannot be found. Error code: CV-FG", "No contacts found.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Hide();
+                new ContactList().Show();
             }
         }
 

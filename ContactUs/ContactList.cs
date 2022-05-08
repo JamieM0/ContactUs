@@ -54,23 +54,20 @@ namespace ContactUs
                         string emailAddress = words[4];
                         string phoneNumber = words[5];
 
-                        contacts[rIDNum, 0] = relativeID;
-                        contacts[rIDNum, 1] = image;
-                        contacts[rIDNum, 2] = firstName;
-                        contacts[rIDNum, 3] = lastName;
-                        contacts[rIDNum, 4] = emailAddress;
-                        contacts[rIDNum, 5] = phoneNumber;
-
-                        //// Add the contact to the list
-                        //contactList.Items.Add(contact_local);
-
-                        //string test = contact_local.FirstName;
-                        // Set pb[rIDNum] to contacts[rIDNum, 1]
-                        //pb0.Image = Image.FromFile(contacts[rIDNum, 1]);
-                        fName0.Text = contacts[rIDNum, 2];
-                        lName0.Text = contacts[rIDNum, 3];
-                        emailAddress0.Text = contacts[rIDNum, 4];
-                        phoneNumber0.Text = contacts[rIDNum, 5];
+                        if (contactNumberList == 0)
+                        {
+                            //pb0.Image = Image.FromFile(image);
+                            fName0.Text = firstName;
+                            lName0.Text = lastName;
+                            emailAddress0.Text = emailAddress;
+                            phoneNumber0.Text = phoneNumber;
+                        }
+                        else
+                        {
+                            int count = pnlContactList.Controls.OfType<Panel>().ToList().Count;
+                            newPanel(count, firstName, lastName, emailAddress, phoneNumber, image);
+                        }
+                        contactNumberList++;
                     }
                 }
             }
@@ -115,8 +112,8 @@ namespace ContactUs
             pb.Name = "pb" + (count + 1);
             pb.Size = new System.Drawing.Size(142, 140);
             pb.SizeMode = PictureBoxSizeMode.Zoom;
-            pb.Image = Image.FromFile(image);
-            pnlContactList.Controls.Add(pb);
+            //pb.Image = Image.FromFile(image);
+            panel.Controls.Add(pb);
 
             Label labelFName = new Label();
             labelFName.Location = new System.Drawing.Point(148, 3);
@@ -124,7 +121,7 @@ namespace ContactUs
             labelFName.Size = new System.Drawing.Size(173, 45);
             labelFName.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
             labelFName.Text = firstName;
-            pnlContactList.Controls.Add(labelFName);
+            panel.Controls.Add(labelFName);
 
             Label labelLName = new Label();
             labelLName.Location = new System.Drawing.Point(316, 3);
@@ -132,7 +129,7 @@ namespace ContactUs
             labelLName.Size = new System.Drawing.Size(167, 45);
             labelLName.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
             labelLName.Text = lastName;
-            pnlContactList.Controls.Add(labelLName);
+            panel.Controls.Add(labelLName);
 
             Label labelEMail = new Label();
             labelEMail.Location = new System.Drawing.Point(151, 58);
@@ -140,7 +137,7 @@ namespace ContactUs
             labelEMail.Size = new System.Drawing.Size(295, 25);
             labelEMail.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular);
             labelEMail.Text = emailAddress;
-            pnlContactList.Controls.Add(labelEMail);
+            panel.Controls.Add(labelEMail);
 
             Label labelPhoneNumber = new Label();
             labelPhoneNumber.Location = new System.Drawing.Point(151, 97);
@@ -148,11 +145,13 @@ namespace ContactUs
             labelPhoneNumber.Size = new System.Drawing.Size(122, 25);
             labelPhoneNumber.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular);
             labelPhoneNumber.Text = phoneNumber;
-            pnlContactList.Controls.Add(labelPhoneNumber);
+            panel.Controls.Add(labelPhoneNumber);
         }
 
         private void panel_Click(object sender, EventArgs e)
         {
+            string name = ((Panel)sender).Name;
+
             Hide();
             new ContactView().Show();
         }

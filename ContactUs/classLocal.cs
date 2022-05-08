@@ -43,5 +43,12 @@ namespace ContactUs
         //public string inDir = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
         //public string locationPath = ($@"{inDir}\ContactUsProgram");
         //public string filePath = /*@*/$@"{locationPath}\users.txt";/*\\*/
+
+        public string Image;
+        public string fName;
+        public string lName;
+        public string email;
+        public string mobile;
+        public string DOB;
     }
 }

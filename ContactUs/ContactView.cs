@@ -20,11 +20,12 @@ namespace ContactUs
         {
             InitializeComponent();
             CenterToScreen();
-            DialogResult dialogResult = MessageBox.Show("Load contact 1?", "Load contact 1?", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
-                LoadContact();
-            }
+            //DialogResult dialogResult = MessageBox.Show("Load contact 1?", "Load contact 1?", MessageBoxButtons.YesNo);
+            //if (dialogResult == DialogResult.Yes)
+            //{
+            //    LoadContact();
+            //}
+            LoadContact();
             
         }
 
@@ -291,25 +292,27 @@ namespace ContactUs
                 //Check if contacts exist in the conf file
                 if (allContacts.Length > 0)
                 {
+                    int id = connect.clocal.ID;
+
                     //Loop over each player details
                     foreach (var contact in allContacts)
                     {
-                        //Get the contact info
-                        var splitDetails = contact.Split('~');
-                        //var unsplitDetails = new string[splitDetails.Length];
-                        pbContactPicture.ImageLocation = splitDetails[1];
-                        txtFName.Text = splitDetails[2];
-                        txtLName.Text = splitDetails[3];
-                        rtxtEmailAddresses.Text = splitDetails[4];
-                        rtxtPhoneNumbers.Text = splitDetails[5];
-                        dtpBirthdate.Value = Convert.ToDateTime(splitDetails[6]);
-                        dtpOtherDate.Value = Convert.ToDateTime(splitDetails[7]);
-                        txtOtherDate.Text = splitDetails[8];
-                        rtxtNotes.Text = splitDetails[9];
-                        rtxtAddress.Text = splitDetails[10];
-                        //string unsplitDetails = classAesOperation.DecryptString(key, splitDetails[0]);
-                        //dgPupils.Rows.Add(unsplitDetails[0], unsplitDetails[1], Convert.ToString(unsplitDetails[3]), Convert.ToString(unsplitDetails[2]), Convert.ToInt32(unsplitDetails[4]),
-                        //    Convert.ToInt32(unsplitDetails[5]), Convert.ToInt32(unsplitDetails[6]), unsplitDetails[7]);
+                        if (id == Convert.ToInt32(contact.Split('~')[0]))
+                        {
+                            //Get the contact info
+                            var splitDetails = contact.Split('~');
+                            //var unsplitDetails = new string[splitDetails.Length];
+                            pbContactPicture.ImageLocation = splitDetails[1];
+                            txtFName.Text = splitDetails[2];
+                            txtLName.Text = splitDetails[3];
+                            rtxtEmailAddresses.Text = splitDetails[4];
+                            rtxtPhoneNumbers.Text = splitDetails[5];
+                            dtpBirthdate.Value = Convert.ToDateTime(splitDetails[6]);
+                            dtpOtherDate.Value = Convert.ToDateTime(splitDetails[7]);
+                            txtOtherDate.Text = splitDetails[8];
+                            rtxtNotes.Text = splitDetails[9];
+                            rtxtAddress.Text = splitDetails[10];
+                        }
 
                     }
 

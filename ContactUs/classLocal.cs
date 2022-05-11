@@ -50,5 +50,7 @@ namespace ContactUs
         public string email;
         public string mobile;
         public string DOB;
+
+        public int ID = 0;
     }
 }

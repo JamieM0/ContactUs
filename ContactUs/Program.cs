@@ -16,7 +16,7 @@ namespace ContactUs
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ContactView());
+            Application.Run(new ContactList());
         }
     }
 }

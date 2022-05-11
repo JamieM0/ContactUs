@@ -13,6 +13,8 @@ namespace ContactUs
 {
     public partial class ContactList : Form
     {
+        int numbertotal = 0;
+        
         public ContactList()
         {
             InitializeComponent();
@@ -42,6 +44,7 @@ namespace ContactUs
                 if (allContacts.Length > 0)
                 {
                     int contactNumberList = 0;
+                    int[] ids = new int[allContacts.Length+1];
                     //Loop through all the contacts
                     foreach (var contact in allContacts)
                     {
@@ -61,13 +64,16 @@ namespace ContactUs
                             lName0.Text = lastName;
                             emailAddress0.Text = emailAddress;
                             phoneNumber0.Text = phoneNumber;
+                            ids[contactNumberList] = rIDNum;
                         }
                         else
                         {
                             int count = pnlContactList.Controls.OfType<Panel>().ToList().Count;
                             newPanel(count, firstName, lastName, emailAddress, phoneNumber, image);
+                            ids[contactNumberList] = rIDNum;
                         }
                         contactNumberList++;
+                        numbertotal = contactNumberList;
                     }
                 }
             }
@@ -103,7 +109,7 @@ namespace ContactUs
                 panel.Location = new System.Drawing.Point(627, 3 + (155 * (count / 2)));
             }
             panel.Size = new System.Drawing.Size(580, 149);
-            panel.Name = "pnlContact" + (count + 1);
+            panel.Name = "pnlContact_" + (count/* + 1*/);
             panel.Click += new EventHandler(panel_Click);
             pnlContactList.Controls.Add(panel);
 
@@ -118,9 +124,9 @@ namespace ContactUs
             Label labelFName = new Label();
             labelFName.Location = new System.Drawing.Point(148, 3);
             labelFName.Name = "fName" + (count + 1);
-            labelFName.Size = new System.Drawing.Size(173, 45);
+            labelFName.Size = new System.Drawing.Size(/*173*/500, 45);
             labelFName.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
-            labelFName.Text = firstName;
+            labelFName.Text = /*firstName*/panel.Name;
             panel.Controls.Add(labelFName);
 
             Label labelLName = new Label();
@@ -151,6 +157,21 @@ namespace ContactUs
         private void panel_Click(object sender, EventArgs e)
         {
             string name = ((Panel)sender).Name;
+
+            string[] name_split = name.Split('_');
+
+            int selected_id = Convert.ToInt32(name_split[1]);
+
+            connect.clocal.ID = selected_id;
+
+            Hide();
+            new ContactView().Show();
+        }
+
+        private void btnAddContact_Click(object sender, EventArgs e)
+        {
+            numbertotal++;
+            connect.clocal.ID = numbertotal;
 
             Hide();
             new ContactView().Show();

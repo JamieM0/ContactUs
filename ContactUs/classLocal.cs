@@ -52,5 +52,6 @@ namespace ContactUs
         public string DOB;
 
         public int ID = 0;
+        public int selected_id = 0;
     }
 }

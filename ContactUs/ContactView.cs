@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Diagnostics;
 
 namespace ContactUs
 {
@@ -68,6 +69,8 @@ namespace ContactUs
 
         }
 
+        string imgIconName = "";
+        
         private void btnChangeContactImage_Click(object sender, EventArgs e)
         {
             var fileContent = string.Empty;
@@ -93,6 +96,19 @@ namespace ContactUs
                     //{
                     //    fileContent = reader.ReadToEnd();
                     //}
+
+                    //Copy image to program location
+
+                    //Try to copy the image
+                    try {
+                        File.Copy(openFileDialog.FileName, openFileDialog.SafeFileName);
+                    }
+                    catch
+                    {
+                        
+                    }
+
+                    imgIconName = openFileDialog.SafeFileName;
                 }
             }
 
@@ -200,6 +216,7 @@ namespace ContactUs
 
         private void btnSaveAndReturn_Click(object sender, EventArgs e)
         {
+            connect.clocal.selected_id = 0;
             SaveFull();
             IsSaved = false;
             new ContactList().Show();
@@ -212,8 +229,16 @@ namespace ContactUs
             string locationPath = ($@"{inDir}\ContactUsProgram");
             string filePath = /*@*/$@"{locationPath}\contacts_{userlinenumber}.conf";/*\\*/
             string fileName = filePath;
+            // Kill contacts.conf
+            Process[] workers = Process.GetProcessesByName(filePath);
+            foreach (Process worker in workers)
+            {
+                worker.Kill();
+                worker.WaitForExit();
+                worker.Dispose();
+            }
 
-            string contactimage = /*pbContactPicture.ImageLocation*/"example.jpg";
+            string contactimage = imgIconName;
             string fName = txtFName.Text;
             string lName = txtLName.Text;
             string/*[]*/ emails = rtxtEmailAddresses.Text/*.Split(new string[] { Environment.NewLine }, StringSplitOptions.None*//*Environment.NewLine*//*, StringSplitOptions.RemoveEmptyEntries*//*)*/;
@@ -223,7 +248,7 @@ namespace ContactUs
             string otherdatelabel = txtOtherDate.Text;
             string notes = rtxtNotes.Text;
             string address = rtxtAddress.Text;
-            int relativeID = 0;
+            int relativeID = File.ReadLines(fileName).Count();
 
             FileStream aFile;
             StreamWriter sw;
@@ -233,13 +258,12 @@ namespace ContactUs
                 if (!File.Exists(fileName))
                 {
                     aFile = new FileStream(fileName, FileMode.Create, FileAccess.Write);
-                    //relativeID = 0;
+                    relativeID = 0;
                 }
                 else
                 {
                     //If the file already exists, then open it in append mode.
                     aFile = new FileStream(fileName, FileMode.Append, FileAccess.Write);
-                    //relativeID = File.ReadLines(fileName).Count();
                 }
 
                 //Create a new connection to the file writer
@@ -254,8 +278,8 @@ namespace ContactUs
                 aFile.Close();
                 aFile.Dispose();
                 sw.Dispose();
-                aFile.Flush();
-                sw.Flush();
+                //aFile.Flush();
+                //sw.Flush();
                 //aFile.
 
                 MessageBox.Show("Contact information has been saved successfully!", "Successful");
@@ -273,6 +297,7 @@ namespace ContactUs
 
         private void btnReturnToMainMenu_Click(object sender, EventArgs e)
         {
+            connect.clocal.selected_id = 0;
             Hide();
             new ContactList().Show();
         }
@@ -292,28 +317,31 @@ namespace ContactUs
                 //Check if contacts exist in the conf file
                 if (allContacts.Length > 0)
                 {
-                    int id = connect.clocal.ID;
+                    int sid = connect.clocal.selected_id;
 
-                    //Loop over each player details
-                    foreach (var contact in allContacts)
+                    if (sid != 0)
                     {
-                        if (id == Convert.ToInt32(contact.Split('~')[0]))
+                        //Loop over each player details
+                        foreach (var contact in allContacts)
                         {
-                            //Get the contact info
-                            var splitDetails = contact.Split('~');
-                            //var unsplitDetails = new string[splitDetails.Length];
-                            pbContactPicture.ImageLocation = splitDetails[1];
-                            txtFName.Text = splitDetails[2];
-                            txtLName.Text = splitDetails[3];
-                            rtxtEmailAddresses.Text = splitDetails[4];
-                            rtxtPhoneNumbers.Text = splitDetails[5];
-                            dtpBirthdate.Value = Convert.ToDateTime(splitDetails[6]);
-                            dtpOtherDate.Value = Convert.ToDateTime(splitDetails[7]);
-                            txtOtherDate.Text = splitDetails[8];
-                            rtxtNotes.Text = splitDetails[9];
-                            rtxtAddress.Text = splitDetails[10];
-                        }
+                            if (sid - 1 == Convert.ToInt32(contact.Split('~')[0]))
+                            {
+                                //Get the contact info
+                                var splitDetails = contact.Split('~');
+                                //var unsplitDetails = new string[splitDetails.Length];
+                                pbContactPicture.ImageLocation = splitDetails[1];
+                                txtFName.Text = splitDetails[2];
+                                txtLName.Text = splitDetails[3];
+                                rtxtEmailAddresses.Text = splitDetails[4];
+                                rtxtPhoneNumbers.Text = splitDetails[5];
+                                dtpBirthdate.Value = Convert.ToDateTime(splitDetails[6]);
+                                dtpOtherDate.Value = Convert.ToDateTime(splitDetails[7]);
+                                txtOtherDate.Text = splitDetails[8];
+                                rtxtNotes.Text = splitDetails[9];
+                                rtxtAddress.Text = splitDetails[10];
+                            }
 
+                        }
                     }
 
                     //Dispose();

@@ -18,6 +18,7 @@ namespace ContactUs
         public ContactList()
         {
             InitializeComponent();
+            CenterToScreen();
         }
 
         private void ContactList_Load(object sender, EventArgs e)
@@ -34,17 +35,17 @@ namespace ContactUs
             string locationPath = ($@"{inDir}\ContactUsProgram");
             string filePath = /*@*/$@"{locationPath}\contacts_{userlinenumber}.conf";/*\\*/
             string fileName = filePath;
-            string[] lines = System.IO.File.ReadAllLines($@"{fileName}");
             if (File.Exists(fileName))
             {
+                string[] lines = System.IO.File.ReadAllLines($@"{fileName}");
                 //Read in contacts
                 var allContacts = File.ReadAllLines(fileName);
-                
+
                 //Check that there's actually something there
                 if (allContacts.Length > 0)
                 {
                     int contactNumberList = 0;
-                    int[] ids = new int[allContacts.Length+1];
+                    int[] ids = new int[allContacts.Length + 1];
                     //Loop through all the contacts
                     foreach (var contact in allContacts)
                     {
@@ -59,11 +60,11 @@ namespace ContactUs
 
                         if (contactNumberList == 0)
                         {
-                            //pb0.Image = Image.FromFile(image);
-                            fName0.Text = firstName;
-                            lName0.Text = lastName;
-                            emailAddress0.Text = emailAddress;
-                            phoneNumber0.Text = phoneNumber;
+                            pb_0.Image = Image.FromFile($@"{image}");
+                            fName_0.Text = $"{firstName} {lastName}";
+                            lName0.Text = "";
+                            emailAddress_0.Text = emailAddress;
+                            phoneNumber_0.Text = phoneNumber;
                             ids[contactNumberList] = rIDNum;
                         }
                         else
@@ -77,7 +78,11 @@ namespace ContactUs
                     }
                 }
             }
-
+            else
+            {
+                //Create a new file
+                File.Create(fileName).Dispose();
+            }
         }
 
         private void btn0_Click(object sender, EventArgs e)
@@ -93,8 +98,11 @@ namespace ContactUs
 
         private void pnlContact0_Click(object sender, EventArgs e)
         {
-            Hide();
-            new ContactView().Show();
+            name = ((Panel)sender).Name;
+
+            name_split = name.Split('_');
+
+            moveOn();
         }
 
         private void newPanel(int count, string firstName, string lastName, string emailAddress, string phoneNumber, string image)
@@ -109,69 +117,133 @@ namespace ContactUs
                 panel.Location = new System.Drawing.Point(627, 3 + (155 * (count / 2)));
             }
             panel.Size = new System.Drawing.Size(580, 149);
-            panel.Name = "pnlContact_" + (count/* + 1*/);
+            panel.Name = "pnlContact_" + (count);
             panel.Click += new EventHandler(panel_Click);
             pnlContactList.Controls.Add(panel);
 
             PictureBox pb = new PictureBox();
             pb.Location = new System.Drawing.Point(0, 3);
-            pb.Name = "pb" + (count + 1);
+            pb.Name = "pb_" + (count);
             pb.Size = new System.Drawing.Size(142, 140);
             pb.SizeMode = PictureBoxSizeMode.Zoom;
-            //pb.Image = Image.FromFile(image);
+            pb.Image = Image.FromFile($@"{image}");
+            pb.Click += new EventHandler(pb_Click);
             panel.Controls.Add(pb);
 
             Label labelFName = new Label();
             labelFName.Location = new System.Drawing.Point(148, 3);
-            labelFName.Name = "fName" + (count + 1);
-            labelFName.Size = new System.Drawing.Size(/*173*/500, 45);
+            labelFName.Name = "fName_" + (count);
+            labelFName.Size = new System.Drawing.Size(500, 45);
             labelFName.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
-            labelFName.Text = /*firstName*/panel.Name;
+            labelFName.Text = $"{firstName} {lastName}";
+            labelFName.Click += new EventHandler(label_Click);
             panel.Controls.Add(labelFName);
-
-            Label labelLName = new Label();
-            labelLName.Location = new System.Drawing.Point(316, 3);
-            labelLName.Name = "lName" + (count + 1);
-            labelLName.Size = new System.Drawing.Size(167, 45);
-            labelLName.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
-            labelLName.Text = lastName;
-            panel.Controls.Add(labelLName);
 
             Label labelEMail = new Label();
             labelEMail.Location = new System.Drawing.Point(151, 58);
-            labelEMail.Name = "emailAddress" + (count + 1);
+            labelEMail.Name = "emailAddress_" + (count);
             labelEMail.Size = new System.Drawing.Size(295, 25);
             labelEMail.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular);
             labelEMail.Text = emailAddress;
+            labelEMail.Click += new EventHandler(label_Click);
             panel.Controls.Add(labelEMail);
 
             Label labelPhoneNumber = new Label();
             labelPhoneNumber.Location = new System.Drawing.Point(151, 97);
-            labelPhoneNumber.Name = "phoneNumber" + (count + 1);
+            labelPhoneNumber.Name = "phoneNumber_" + (count);
             labelPhoneNumber.Size = new System.Drawing.Size(122, 25);
             labelPhoneNumber.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular);
             labelPhoneNumber.Text = phoneNumber;
+            labelPhoneNumber.Click += new EventHandler(label_Click);
             panel.Controls.Add(labelPhoneNumber);
         }
 
+        string name = "";
+        string[] name_split;
+        int selected_id = 0;
+
         private void panel_Click(object sender, EventArgs e)
         {
-            string name = ((Panel)sender).Name;
+            name = ((Panel)sender).Name;
 
-            string[] name_split = name.Split('_');
+            name_split = name.Split('_');
 
-            int selected_id = Convert.ToInt32(name_split[1]);
+            moveOn();
+        }
 
-            connect.clocal.ID = selected_id;
+        private void pb_Click(object sender, EventArgs e)
+        {
+            name = ((PictureBox)sender).Name;
 
-            Hide();
-            new ContactView().Show();
+            name_split = name.Split('_');
+
+            moveOn();
+        }
+
+        private void label_Click(object sender, EventArgs e)
+        {
+            name = ((Label)sender).Name;
+
+            name_split = name.Split('_');
+
+            moveOn();
         }
 
         private void btnAddContact_Click(object sender, EventArgs e)
         {
             numbertotal++;
             connect.clocal.ID = numbertotal;
+
+            Hide();
+            new ContactView().Show();
+        }
+
+        private void fName0_Click(object sender, EventArgs e)
+        {
+            name = ((Label)sender).Name;
+
+            name_split = name.Split('_');
+
+            moveOn();
+        }
+
+        private void pb0_Click(object sender, EventArgs e)
+        {
+            name = ((PictureBox)sender).Name;
+
+            name_split = name.Split('_');
+
+            moveOn();
+        }
+
+        private void emailAddress0_Click(object sender, EventArgs e)
+        {
+            name = ((Label)sender).Name;
+
+            name_split = name.Split('_');
+
+            moveOn();
+        }
+
+        private void phoneNumber0_Click(object sender, EventArgs e)
+        {
+            name = ((Label)sender).Name;
+
+            name_split = name.Split('_');
+
+            moveOn();
+        }
+
+        private void zeroClicked()
+        {
+            //panel_Click();
+        }
+
+        private void moveOn()
+        {
+            selected_id = Convert.ToInt32(name_split[1]) + 1;
+
+            connect.clocal.selected_id = selected_id;
 
             Hide();
             new ContactView().Show();

@@ -248,5 +248,39 @@ namespace ContactUs
             Hide();
             new ContactView().Show();
         }
+
+        private void pnlContactList_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnDeleteAllContacts_Click(object sender, EventArgs e)
+        {
+            // Import contact list from contacts_0.conf file
+            string userlinenumber = connect.clocal.userlinenumber.ToString();
+            var inDir = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+            string locationPath = ($@"{inDir}\ContactUsProgram");
+            string filePath = /*@*/$@"{locationPath}\contacts_{userlinenumber}.conf";/*\\*/
+            string fileName = filePath;
+
+            if (MessageBox.Show("This will delete all your contacts, there is no way to undo this. Would you like to continue?", "WARNING!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                if (File.Exists(fileName))
+                {
+                    File.Delete(fileName);
+                }
+                else
+                {
+                    MessageBox.Show("No contacts to delete!", "Error Code: CL-NC");
+                }
+            }
+            else
+            {
+                MessageBox.Show("No contacts were deleted!");
+            }
+
+            this.Hide();
+            new ContactList().Show();
+        }
     }
 }

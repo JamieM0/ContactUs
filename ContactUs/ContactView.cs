@@ -248,6 +248,11 @@ namespace ContactUs
             string otherdatelabel = txtOtherDate.Text;
             string notes = rtxtNotes.Text;
             string address = rtxtAddress.Text;
+            if (contactimage == "")
+            {
+                contactimage = "example.png";
+            }
+
             int relativeID = File.ReadLines(fileName).Count();
 
             FileStream aFile;
@@ -349,7 +354,7 @@ namespace ContactUs
                 else
                 {
                     
-                    MessageBox.Show("No contacts have been found. Error code: CV-NF", "No contacts found.",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //MessageBox.Show("No contacts have been found. Error code: CV-NF", "No contacts found.",MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
                 //fileName.Close();

@@ -38,6 +38,7 @@
             this.pnlContactList = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAddContact = new System.Windows.Forms.Button();
+            this.btnDeleteAllContacts = new System.Windows.Forms.Button();
             this.pnlContact_0.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_0)).BeginInit();
             this.pnlContactList.SuspendLayout();
@@ -118,6 +119,7 @@
             this.pnlContactList.Name = "pnlContactList";
             this.pnlContactList.Size = new System.Drawing.Size(1210, 629);
             this.pnlContactList.TabIndex = 1;
+            this.pnlContactList.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlContactList_Paint);
             // 
             // label1
             // 
@@ -141,11 +143,23 @@
             this.btnAddContact.UseVisualStyleBackColor = true;
             this.btnAddContact.Click += new System.EventHandler(this.btnAddContact_Click);
             // 
+            // btnDeleteAllContacts
+            // 
+            this.btnDeleteAllContacts.Font = new System.Drawing.Font("Roboto", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteAllContacts.Location = new System.Drawing.Point(715, 9);
+            this.btnDeleteAllContacts.Name = "btnDeleteAllContacts";
+            this.btnDeleteAllContacts.Size = new System.Drawing.Size(284, 52);
+            this.btnDeleteAllContacts.TabIndex = 4;
+            this.btnDeleteAllContacts.Text = "Delete all contacts";
+            this.btnDeleteAllContacts.UseVisualStyleBackColor = true;
+            this.btnDeleteAllContacts.Click += new System.EventHandler(this.btnDeleteAllContacts_Click);
+            // 
             // ContactList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1234, 711);
+            this.Controls.Add(this.btnDeleteAllContacts);
             this.Controls.Add(this.btnAddContact);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pnlContactList);
@@ -172,5 +186,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnAddContact;
         private System.Windows.Forms.Label lName0;
+        private System.Windows.Forms.Button btnDeleteAllContacts;
     }
 }

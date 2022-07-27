@@ -17,3 +17,11 @@ There was an error saving, make an [issue under bug](https://github.com/JamieM0/
 ### ContactList No Contacts
 
 This error occurs if contacts are required for a given task, e.g. Deleting all contacts, but no contacts were found!
+
+
+
+## CV-IS
+
+### ContactView Invalid Save
+
+This could happen for a few reasons - it's probably a bug, so if you are sure that the contacts file isn't open anywhere, you could make a [detailed bug report as a Github issue under the bug tag](https://github.com/JamieM0/ContactUs/issues)!

@@ -27,7 +27,10 @@ namespace ContactUs
             //    LoadContact();
             //}
             LoadContact();
-            
+            if (editingPreviousContact)
+            {
+                lbTitle.Text = $"{txtFName.Text} {txtLName.Text}";
+            }
         }
 
         private void lbFName_Click(object sender, EventArgs e)
@@ -109,6 +112,7 @@ namespace ContactUs
                     }
 
                     imgIconName = openFileDialog.SafeFileName;
+                    absoluteImageIcon = openFileDialog.SafeFileName;
                 }
             }
 
@@ -196,10 +200,9 @@ namespace ContactUs
 
         static void lineChanger(string newText, string fileName, int line_to_edit) //Changes a certain line of a certain text file (used for changing the user's password in txtUsers.txt).
         {
-            string[] arrLine = File.ReadAllLines(fileName);
-            //arrLine[line_to_edit - 1] = newText;
-            arrLine[line_to_edit] = newText;
-            File.WriteAllLines(fileName, arrLine);
+            ContactView cv = new ContactView();
+            cv.arrLine[line_to_edit] = newText;
+            File.WriteAllLines(fileName, cv.arrLine);
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
@@ -248,7 +251,7 @@ namespace ContactUs
             string otherdatelabel = txtOtherDate.Text;
             string notes = rtxtNotes.Text;
             string address = rtxtAddress.Text;
-            if (contactimage == "")
+            if (contactimage == "" && !editingPreviousContact)
             {
                 contactimage = "example.png";
             }
@@ -265,35 +268,41 @@ namespace ContactUs
                     aFile = new FileStream(fileName, FileMode.Create, FileAccess.Write);
                     relativeID = 0;
                 }
-                else
+                else if (!editingPreviousContact)
                 {
                     //If the file already exists, then open it in append mode.
                     aFile = new FileStream(fileName, FileMode.Append, FileAccess.Write);
+                    
+                    //Create a new connection to the file writer
+                    sw = new StreamWriter(aFile);
+
+                    //Write the contact details to the file with each piece of data separated with the '~' symbol.
+                    sw.WriteLine($"{relativeID}~{contactimage}~{fName}~{lName}~{emails}~{phoneNumbers}" +
+                        $"~{birthdate}~{otherdate}~{otherdatelabel}~{notes}~{address}");
+
+                    //Close the connection to the file
+                    sw.Close();
+                    aFile.Close();
+                    aFile.Dispose();
+                    sw.Dispose();
+                    //aFile.Flush();
+                    //sw.Flush();
+                    //aFile.
+
                 }
-
-                //Create a new connection to the file writer
-                sw = new StreamWriter(aFile);
-
-                //Write the contacr details to the file with each piece of data separated with the '~' symbol.
-                sw.WriteLine($"{relativeID}~{contactimage}~{fName}~{lName}~{emails}~{phoneNumbers}" +
-                    $"~{birthdate}~{otherdate}~{otherdatelabel}~{notes}~{address}");
-
-                //Close the connection to the file
-                sw.Close();
-                aFile.Close();
-                aFile.Dispose();
-                sw.Dispose();
-                //aFile.Flush();
-                //sw.Flush();
-                //aFile.
-
+                else
+                {
+                    //Change the line of sid-1 to the new data.
+                    lineChanger($"{absoluteRelativeID}~{absoluteImageIcon}~{fName}~{lName}~{emails}~{phoneNumbers}" +
+                        $"~{birthdate}~{otherdate}~{otherdatelabel}~{notes}~{address}", fileName, sid-1);
+                }
                 MessageBox.Show("Contact information has been saved successfully!", "Successful");
             }
 
             catch (Exception ex)
             {
                 //If the file cannot be found give the user a suitable message
-                MessageBox.Show(ex.Message, "Could not save Contact Information! \r\n\r\nError code: Invalid Contact Save \r\n\r\nPlease see the Github page and make an issue if there isn't one \r\nalready made with this problem, and mark it with the 'Bug / Problem' tag.");
+                MessageBox.Show(ex.Message, "Could not save Contact Information! \r\n\r\nError code: CV-IS \r\n\r\nPlease see the Github page and make an issue if there isn't one \r\nalready made with this problem, and mark it with the 'Bug / Problem' tag.");
             }
 
             //sw.Close();
@@ -307,6 +316,12 @@ namespace ContactUs
             new ContactList().Show();
         }
 
+        bool editingPreviousContact = false;
+        int sid;
+        string[] arrLine = new string [100];
+        string absoluteRelativeID;
+        string absoluteImageIcon;
+
         private void LoadContact()
         {
             string userlinenumber = connect.clocal.userlinenumber.ToString();
@@ -318,14 +333,17 @@ namespace ContactUs
             {
                 //Read in all the details of the conf file
                 var allContacts = File.ReadAllLines($@"{locationPath}\contacts_{userlinenumber}.conf");
+                arrLine = File.ReadAllLines(fileName);
 
                 //Check if contacts exist in the conf file
                 if (allContacts.Length > 0)
                 {
-                    int sid = connect.clocal.selected_id;
+                    sid = connect.clocal.selected_id;
 
                     if (sid != 0)
                     {
+                        editingPreviousContact = true;
+                        
                         //Loop over each player details
                         foreach (var contact in allContacts)
                         {
@@ -334,7 +352,9 @@ namespace ContactUs
                                 //Get the contact info
                                 var splitDetails = contact.Split('~');
                                 //var unsplitDetails = new string[splitDetails.Length];
+                                absoluteRelativeID = splitDetails[0];
                                 pbContactPicture.ImageLocation = splitDetails[1];
+                                absoluteImageIcon = splitDetails[1];
                                 txtFName.Text = splitDetails[2];
                                 txtLName.Text = splitDetails[3];
                                 rtxtEmailAddresses.Text = splitDetails[4];

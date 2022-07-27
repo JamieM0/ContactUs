@@ -39,6 +39,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnAddContact = new System.Windows.Forms.Button();
             this.btnDeleteAllContacts = new System.Windows.Forms.Button();
+            this.btnRemoveContacts = new System.Windows.Forms.Button();
             this.pnlContact_0.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_0)).BeginInit();
             this.pnlContactList.SuspendLayout();
@@ -154,11 +155,23 @@
             this.btnDeleteAllContacts.UseVisualStyleBackColor = true;
             this.btnDeleteAllContacts.Click += new System.EventHandler(this.btnDeleteAllContacts_Click);
             // 
+            // btnRemoveContacts
+            // 
+            this.btnRemoveContacts.Font = new System.Drawing.Font("Roboto", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoveContacts.Location = new System.Drawing.Point(474, 9);
+            this.btnRemoveContacts.Name = "btnRemoveContacts";
+            this.btnRemoveContacts.Size = new System.Drawing.Size(235, 52);
+            this.btnRemoveContacts.TabIndex = 5;
+            this.btnRemoveContacts.Text = "Remove contacts";
+            this.btnRemoveContacts.UseVisualStyleBackColor = true;
+            this.btnRemoveContacts.Click += new System.EventHandler(this.btnRemoveContacts_Click);
+            // 
             // ContactList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1234, 711);
+            this.Controls.Add(this.btnRemoveContacts);
             this.Controls.Add(this.btnDeleteAllContacts);
             this.Controls.Add(this.btnAddContact);
             this.Controls.Add(this.label1);
@@ -187,5 +200,6 @@
         private System.Windows.Forms.Button btnAddContact;
         private System.Windows.Forms.Label lName0;
         private System.Windows.Forms.Button btnDeleteAllContacts;
+        private System.Windows.Forms.Button btnRemoveContacts;
     }
 }

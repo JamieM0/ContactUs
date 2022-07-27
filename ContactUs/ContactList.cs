@@ -35,6 +35,16 @@ namespace ContactUs
             string locationPath = ($@"{inDir}\ContactUsProgram");
             string filePath = /*@*/$@"{locationPath}\contacts_{userlinenumber}.conf";/*\\*/
             string fileName = filePath;
+            string oldFiles = $@"{locationPath}\oldFiles.conf";
+
+            if (!File.Exists(oldFiles))
+            {
+                using (StreamWriter sw = File.CreateText(oldFiles))
+                {
+                    sw.WriteLine("0");
+                }
+            }
+
             if (File.Exists(fileName))
             {
                 string[] lines = System.IO.File.ReadAllLines($@"{fileName}");
@@ -277,6 +287,32 @@ namespace ContactUs
             else
             {
                 MessageBox.Show("No contacts were deleted!");
+            }
+
+            this.Hide();
+            new ContactList().Show();
+        }
+
+        private void btnRemoveContacts_Click(object sender, EventArgs e)
+        {
+            // Import contact list from contacts_0.conf file
+            string userlinenumber = connect.clocal.userlinenumber.ToString();
+            var inDir = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+            string locationPath = ($@"{inDir}\ContactUsProgram");
+            string filePath = /*@*/$@"{locationPath}\contacts_{userlinenumber}.conf";/*\\*/
+            string fileName = filePath;
+            string oldFiles = $@"{locationPath}\oldFiles.conf";
+            if (MessageBox.Show("This will move all your contacts, but won't permanently delete them. Would you like to continue?", "INFORMATION!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                string curve = File.ReadAllText(oldFiles).Split('\r')[0];
+                File.Move(filePath, $@"{locationPath}\unusednow\contacts_{userlinenumber}{curve}.conf");
+                int curveint = Convert.ToInt32(curve);
+                curveint++;
+                File.WriteAllText(oldFiles, curveint.ToString());
+            }
+            else
+            {
+                MessageBox.Show("No contacts were moved!");
             }
 
             this.Hide();

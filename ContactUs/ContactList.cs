@@ -318,5 +318,11 @@ namespace ContactUs
             this.Hide();
             new ContactList().Show();
         }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            Hide();
+            new Login().Show();
+        }
     }
 }

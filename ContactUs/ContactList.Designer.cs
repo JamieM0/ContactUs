@@ -40,6 +40,7 @@
             this.btnAddContact = new System.Windows.Forms.Button();
             this.btnDeleteAllContacts = new System.Windows.Forms.Button();
             this.btnRemoveContacts = new System.Windows.Forms.Button();
+            this.btnLogout = new System.Windows.Forms.Button();
             this.pnlContact_0.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_0)).BeginInit();
             this.pnlContactList.SuspendLayout();
@@ -166,11 +167,23 @@
             this.btnRemoveContacts.UseVisualStyleBackColor = true;
             this.btnRemoveContacts.Click += new System.EventHandler(this.btnRemoveContacts_Click);
             // 
+            // btnLogout
+            // 
+            this.btnLogout.Font = new System.Drawing.Font("Roboto", 20.25F);
+            this.btnLogout.Location = new System.Drawing.Point(329, 9);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(139, 52);
+            this.btnLogout.TabIndex = 28;
+            this.btnLogout.Text = "Logout";
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
             // ContactList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1234, 711);
+            this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.btnRemoveContacts);
             this.Controls.Add(this.btnDeleteAllContacts);
             this.Controls.Add(this.btnAddContact);
@@ -201,5 +214,6 @@
         private System.Windows.Forms.Label lName0;
         private System.Windows.Forms.Button btnDeleteAllContacts;
         private System.Windows.Forms.Button btnRemoveContacts;
+        private System.Windows.Forms.Button btnLogout;
     }
 }

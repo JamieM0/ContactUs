@@ -57,8 +57,9 @@ namespace ContactUs
                 DialogResult dialogResult = MessageBox.Show("If you have unsaved progress, click No below to return & save it.\r\n Any unsaved data will be lost.\r\nDo you want to continue exiting?", "Are you sure you want to exit?", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    //this.Hide();
-                    System.Windows.Forms.Application.Exit();
+                    connect.clocal.selected_id = 0;
+                    Hide();
+                    new ContactList().Show();
                 }
                 else if (dialogResult == DialogResult.No)
                 {
@@ -76,48 +77,7 @@ namespace ContactUs
         
         private void btnChangeContactImage_Click(object sender, EventArgs e)
         {
-            var fileContent = string.Empty;
-            var filePath = string.Empty;
-            var inDir = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
-
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
-            {
-                openFileDialog.InitialDirectory = inDir + "\\Pictures";
-                openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.tif;...";
-                openFileDialog.FilterIndex = 2;
-                openFileDialog.RestoreDirectory = true;
-
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    //Get the path of specified file
-                    pbContactPicture.Image = new Bitmap(openFileDialog.FileName);
-
-                    //Read the contents of the file into a stream
-                    var fileStream = openFileDialog.OpenFile();
-
-                    //using (StreamReader reader = new StreamReader(fileStream))
-                    //{
-                    //    fileContent = reader.ReadToEnd();
-                    //}
-
-                    //Copy image to program location
-
-                    //Try to copy the image
-                    try {
-                        File.Copy(openFileDialog.FileName, openFileDialog.SafeFileName);
-                    }
-                    catch
-                    {
-                        
-                    }
-
-                    imgIconName = openFileDialog.SafeFileName;
-                    absoluteImageIcon = openFileDialog.SafeFileName;
-                }
-            }
-
-            //MessageBox.Show(fileContent, "File Content at path: " + filePath, MessageBoxButtons.OK);
-            //pbContactPicture.Image = fileContent;
+            
         }
 
         private void txtFName_Leave(object sender, EventArgs e)
@@ -207,8 +167,7 @@ namespace ContactUs
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            Hide();
-            new Login().Show();
+            
         }
 
         private void btnSaveOnly_Click(object sender, EventArgs e)
@@ -311,9 +270,7 @@ namespace ContactUs
 
         private void btnReturnToMainMenu_Click(object sender, EventArgs e)
         {
-            connect.clocal.selected_id = 0;
-            Hide();
-            new ContactList().Show();
+            
         }
 
         bool editingPreviousContact = false;
@@ -421,6 +378,53 @@ namespace ContactUs
         {
             Hide();
             new ContactView().Show();
+        }
+
+        private void pbContactPicture_Click(object sender, EventArgs e)
+        {
+            var fileContent = string.Empty;
+            var filePath = string.Empty;
+            var inDir = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = inDir + "\\Pictures";
+                openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.tif;...";
+                openFileDialog.FilterIndex = 2;
+                openFileDialog.RestoreDirectory = true;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    //Get the path of specified file
+                    pbContactPicture.Image = new Bitmap(openFileDialog.FileName);
+
+                    //Read the contents of the file into a stream
+                    var fileStream = openFileDialog.OpenFile();
+
+                    //using (StreamReader reader = new StreamReader(fileStream))
+                    //{
+                    //    fileContent = reader.ReadToEnd();
+                    //}
+
+                    //Copy image to program location
+
+                    //Try to copy the image
+                    try
+                    {
+                        File.Copy(openFileDialog.FileName, openFileDialog.SafeFileName);
+                    }
+                    catch
+                    {
+
+                    }
+
+                    imgIconName = openFileDialog.SafeFileName;
+                    absoluteImageIcon = openFileDialog.SafeFileName;
+                }
+            }
+
+            //MessageBox.Show(fileContent, "File Content at path: " + filePath, MessageBoxButtons.OK);
+            //pbContactPicture.Image = fileContent;
         }
     }
 }

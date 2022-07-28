@@ -35,14 +35,12 @@
             this.lbLName = new System.Windows.Forms.Label();
             this.txtLName = new System.Windows.Forms.TextBox();
             this.lbEmail = new System.Windows.Forms.Label();
-            this.btnChangeContactImage = new System.Windows.Forms.Button();
             this.lbEmailNumber = new System.Windows.Forms.Label();
             this.rtxtEmailAddresses = new System.Windows.Forms.RichTextBox();
             this.lbPhoneNumbersNumbers = new System.Windows.Forms.Label();
             this.lbPhoneNumbers = new System.Windows.Forms.Label();
             this.rtxtPhoneNumbers = new System.Windows.Forms.RichTextBox();
             this.pbSendMail = new System.Windows.Forms.PictureBox();
-            this.btnExit = new System.Windows.Forms.Button();
             this.lbAddress = new System.Windows.Forms.Label();
             this.lbAddressInfo = new System.Windows.Forms.Label();
             this.rtxtAddress = new System.Windows.Forms.RichTextBox();
@@ -57,9 +55,7 @@
             this.lbTitle = new System.Windows.Forms.Label();
             this.btnSaveOnly = new System.Windows.Forms.Button();
             this.btnSaveAndReturn = new System.Windows.Forms.Button();
-            this.btnLogout = new System.Windows.Forms.Button();
-            this.btnReturnToMainMenu = new System.Windows.Forms.Button();
-            this.btnNewForm = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbContactPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSendMail)).BeginInit();
             this.SuspendLayout();
@@ -67,10 +63,10 @@
             // lbFName
             // 
             this.lbFName.AutoSize = true;
-            this.lbFName.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbFName.Location = new System.Drawing.Point(12, 185);
+            this.lbFName.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbFName.Location = new System.Drawing.Point(12, 178);
             this.lbFName.Name = "lbFName";
-            this.lbFName.Size = new System.Drawing.Size(181, 45);
+            this.lbFName.Size = new System.Drawing.Size(150, 37);
             this.lbFName.TabIndex = 0;
             this.lbFName.Text = "First Name:";
             this.lbFName.Click += new System.EventHandler(this.lbFName_Click);
@@ -84,13 +80,14 @@
             this.pbContactPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbContactPicture.TabIndex = 1;
             this.pbContactPicture.TabStop = false;
+            this.pbContactPicture.Click += new System.EventHandler(this.pbContactPicture_Click);
             // 
             // txtFName
             // 
-            this.txtFName.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFName.Location = new System.Drawing.Point(211, 188);
+            this.txtFName.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFName.Location = new System.Drawing.Point(174, 181);
             this.txtFName.Name = "txtFName";
-            this.txtFName.Size = new System.Drawing.Size(322, 43);
+            this.txtFName.Size = new System.Drawing.Size(455, 35);
             this.txtFName.TabIndex = 1;
             this.txtFName.TextChanged += new System.EventHandler(this.txtFName_TextChanged);
             this.txtFName.Leave += new System.EventHandler(this.txtFName_Leave);
@@ -98,20 +95,20 @@
             // lbLName
             // 
             this.lbLName.AutoSize = true;
-            this.lbLName.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbLName.Location = new System.Drawing.Point(12, 265);
+            this.lbLName.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLName.Location = new System.Drawing.Point(12, 257);
             this.lbLName.Name = "lbLName";
-            this.lbLName.Size = new System.Drawing.Size(177, 45);
+            this.lbLName.Size = new System.Drawing.Size(148, 37);
             this.lbLName.TabIndex = 3;
             this.lbLName.Text = "Last Name:";
             this.lbLName.Click += new System.EventHandler(this.label1_Click);
             // 
             // txtLName
             // 
-            this.txtLName.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLName.Location = new System.Drawing.Point(211, 268);
+            this.txtLName.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLName.Location = new System.Drawing.Point(174, 260);
             this.txtLName.Name = "txtLName";
-            this.txtLName.Size = new System.Drawing.Size(322, 43);
+            this.txtLName.Size = new System.Drawing.Size(455, 35);
             this.txtLName.TabIndex = 2;
             this.txtLName.TextChanged += new System.EventHandler(this.txtLName_TextChanged);
             this.txtLName.Leave += new System.EventHandler(this.txtLName_Leave);
@@ -119,41 +116,29 @@
             // lbEmail
             // 
             this.lbEmail.AutoSize = true;
-            this.lbEmail.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbEmail.Location = new System.Drawing.Point(12, 365);
+            this.lbEmail.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbEmail.Location = new System.Drawing.Point(11, 317);
             this.lbEmail.Name = "lbEmail";
-            this.lbEmail.Size = new System.Drawing.Size(278, 45);
+            this.lbEmail.Size = new System.Drawing.Size(230, 37);
             this.lbEmail.TabIndex = 5;
             this.lbEmail.Text = "Email Address(es):";
-            // 
-            // btnChangeContactImage
-            // 
-            this.btnChangeContactImage.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnChangeContactImage.Location = new System.Drawing.Point(211, 123);
-            this.btnChangeContactImage.Name = "btnChangeContactImage";
-            this.btnChangeContactImage.Size = new System.Drawing.Size(322, 40);
-            this.btnChangeContactImage.TabIndex = 10;
-            this.btnChangeContactImage.Text = "Change contact image";
-            this.btnChangeContactImage.UseVisualStyleBackColor = true;
-            this.btnChangeContactImage.Click += new System.EventHandler(this.btnChangeContactImage_Click);
-            this.btnChangeContactImage.Leave += new System.EventHandler(this.btnChangeContactImage_Leave);
             // 
             // lbEmailNumber
             // 
             this.lbEmailNumber.AutoSize = true;
-            this.lbEmailNumber.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbEmailNumber.Location = new System.Drawing.Point(15, 410);
+            this.lbEmailNumber.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbEmailNumber.Location = new System.Drawing.Point(15, 353);
             this.lbEmailNumber.Name = "lbEmailNumber";
-            this.lbEmailNumber.Size = new System.Drawing.Size(231, 90);
+            this.lbEmailNumber.Size = new System.Drawing.Size(227, 63);
             this.lbEmailNumber.TabIndex = 8;
-            this.lbEmailNumber.Text = "One email per line! \r\nThe email button will \r\nemail the first one only.";
+            this.lbEmailNumber.Text = "One email per line! \r\nThe email button will email the \r\nfirst one only.";
             // 
             // rtxtEmailAddresses
             // 
             this.rtxtEmailAddresses.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtxtEmailAddresses.Location = new System.Drawing.Point(288, 365);
+            this.rtxtEmailAddresses.Location = new System.Drawing.Point(247, 327);
             this.rtxtEmailAddresses.Name = "rtxtEmailAddresses";
-            this.rtxtEmailAddresses.Size = new System.Drawing.Size(423, 135);
+            this.rtxtEmailAddresses.Size = new System.Drawing.Size(381, 112);
             this.rtxtEmailAddresses.TabIndex = 3;
             this.rtxtEmailAddresses.Text = "";
             this.rtxtEmailAddresses.Leave += new System.EventHandler(this.rtxtEmailAddresses_Leave);
@@ -161,29 +146,29 @@
             // lbPhoneNumbersNumbers
             // 
             this.lbPhoneNumbersNumbers.AutoSize = true;
-            this.lbPhoneNumbersNumbers.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPhoneNumbersNumbers.Location = new System.Drawing.Point(15, 576);
+            this.lbPhoneNumbersNumbers.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPhoneNumbersNumbers.Location = new System.Drawing.Point(16, 505);
             this.lbPhoneNumbersNumbers.Name = "lbPhoneNumbersNumbers";
-            this.lbPhoneNumbersNumbers.Size = new System.Drawing.Size(217, 30);
+            this.lbPhoneNumbersNumbers.Size = new System.Drawing.Size(163, 21);
             this.lbPhoneNumbersNumbers.TabIndex = 11;
             this.lbPhoneNumbersNumbers.Text = "One number per line! \r\n";
             // 
             // lbPhoneNumbers
             // 
             this.lbPhoneNumbers.AutoSize = true;
-            this.lbPhoneNumbers.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPhoneNumbers.Location = new System.Drawing.Point(12, 531);
+            this.lbPhoneNumbers.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPhoneNumbers.Location = new System.Drawing.Point(13, 468);
             this.lbPhoneNumbers.Name = "lbPhoneNumbers";
-            this.lbPhoneNumbers.Size = new System.Drawing.Size(277, 45);
+            this.lbPhoneNumbers.Size = new System.Drawing.Size(229, 37);
             this.lbPhoneNumbers.TabIndex = 10;
             this.lbPhoneNumbers.Text = "Phone Number(s):";
             // 
             // rtxtPhoneNumbers
             // 
             this.rtxtPhoneNumbers.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtxtPhoneNumbers.Location = new System.Drawing.Point(288, 531);
+            this.rtxtPhoneNumbers.Location = new System.Drawing.Point(248, 468);
             this.rtxtPhoneNumbers.Name = "rtxtPhoneNumbers";
-            this.rtxtPhoneNumbers.Size = new System.Drawing.Size(282, 82);
+            this.rtxtPhoneNumbers.Size = new System.Drawing.Size(332, 118);
             this.rtxtPhoneNumbers.TabIndex = 4;
             this.rtxtPhoneNumbers.Text = "";
             this.rtxtPhoneNumbers.TextChanged += new System.EventHandler(this.rtxtPhoneNumbers_TextChanged);
@@ -192,51 +177,40 @@
             // pbSendMail
             // 
             this.pbSendMail.Image = ((System.Drawing.Image)(resources.GetObject("pbSendMail.Image")));
-            this.pbSendMail.Location = new System.Drawing.Point(717, 365);
+            this.pbSendMail.Location = new System.Drawing.Point(634, 327);
             this.pbSendMail.Name = "pbSendMail";
-            this.pbSendMail.Size = new System.Drawing.Size(49, 135);
+            this.pbSendMail.Size = new System.Drawing.Size(49, 112);
             this.pbSendMail.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbSendMail.TabIndex = 13;
             this.pbSendMail.TabStop = false;
             this.pbSendMail.Click += new System.EventHandler(this.pbSendMail_Click);
             // 
-            // btnExit
-            // 
-            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(1072, 13);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(150, 56);
-            this.btnExit.TabIndex = 13;
-            this.btnExit.Text = "Exit";
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            // 
             // lbAddress
             // 
             this.lbAddress.AutoSize = true;
-            this.lbAddress.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbAddress.Location = new System.Drawing.Point(576, 161);
+            this.lbAddress.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbAddress.Location = new System.Drawing.Point(688, 178);
             this.lbAddress.Name = "lbAddress";
-            this.lbAddress.Size = new System.Drawing.Size(142, 45);
+            this.lbAddress.Size = new System.Drawing.Size(117, 37);
             this.lbAddress.TabIndex = 15;
             this.lbAddress.Text = "Address:";
             // 
             // lbAddressInfo
             // 
             this.lbAddressInfo.AutoSize = true;
-            this.lbAddressInfo.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbAddressInfo.Location = new System.Drawing.Point(579, 206);
+            this.lbAddressInfo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbAddressInfo.Location = new System.Drawing.Point(691, 223);
             this.lbAddressInfo.Name = "lbAddressInfo";
-            this.lbAddressInfo.Size = new System.Drawing.Size(145, 60);
+            this.lbAddressInfo.Size = new System.Drawing.Size(110, 42);
             this.lbAddressInfo.TabIndex = 16;
             this.lbAddressInfo.Text = "Use your own \r\nformatting!";
             // 
             // rtxtAddress
             // 
             this.rtxtAddress.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtxtAddress.Location = new System.Drawing.Point(739, 161);
+            this.rtxtAddress.Location = new System.Drawing.Point(811, 181);
             this.rtxtAddress.Name = "rtxtAddress";
-            this.rtxtAddress.Size = new System.Drawing.Size(483, 150);
+            this.rtxtAddress.Size = new System.Drawing.Size(411, 113);
             this.rtxtAddress.TabIndex = 8;
             this.rtxtAddress.Text = "";
             this.rtxtAddress.Leave += new System.EventHandler(this.rtxtAddress_Leave);
@@ -244,55 +218,55 @@
             // lbBirthdate
             // 
             this.lbBirthdate.AutoSize = true;
-            this.lbBirthdate.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbBirthdate.Location = new System.Drawing.Point(12, 643);
+            this.lbBirthdate.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbBirthdate.Location = new System.Drawing.Point(671, 466);
             this.lbBirthdate.Name = "lbBirthdate";
-            this.lbBirthdate.Size = new System.Drawing.Size(156, 45);
+            this.lbBirthdate.Size = new System.Drawing.Size(131, 37);
             this.lbBirthdate.TabIndex = 18;
             this.lbBirthdate.Text = "Birthdate:";
             // 
             // dtpBirthdate
             // 
-            this.dtpBirthdate.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpBirthdate.Location = new System.Drawing.Point(174, 645);
+            this.dtpBirthdate.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpBirthdate.Location = new System.Drawing.Point(811, 468);
             this.dtpBirthdate.Name = "dtpBirthdate";
-            this.dtpBirthdate.Size = new System.Drawing.Size(276, 43);
+            this.dtpBirthdate.Size = new System.Drawing.Size(276, 35);
             this.dtpBirthdate.TabIndex = 5;
             this.dtpBirthdate.Leave += new System.EventHandler(this.dtpBirthdate_Leave);
             // 
             // dtpOtherDate
             // 
-            this.dtpOtherDate.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpOtherDate.Location = new System.Drawing.Point(839, 529);
+            this.dtpOtherDate.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpOtherDate.Location = new System.Drawing.Point(811, 509);
             this.dtpOtherDate.Name = "dtpOtherDate";
-            this.dtpOtherDate.Size = new System.Drawing.Size(276, 43);
+            this.dtpOtherDate.Size = new System.Drawing.Size(276, 35);
             this.dtpOtherDate.TabIndex = 6;
             this.dtpOtherDate.Leave += new System.EventHandler(this.dtpOtherDate_Leave);
             // 
             // lbOtherDate
             // 
             this.lbOtherDate.AutoSize = true;
-            this.lbOtherDate.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbOtherDate.Location = new System.Drawing.Point(576, 528);
+            this.lbOtherDate.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbOtherDate.Location = new System.Drawing.Point(651, 507);
             this.lbOtherDate.Name = "lbOtherDate";
-            this.lbOtherDate.Size = new System.Drawing.Size(180, 45);
+            this.lbOtherDate.Size = new System.Drawing.Size(150, 37);
             this.lbOtherDate.TabIndex = 20;
             this.lbOtherDate.Text = "Other date:";
             // 
             // lbOtherDateLabel
             // 
             this.lbOtherDateLabel.AutoSize = true;
-            this.lbOtherDateLabel.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbOtherDateLabel.Location = new System.Drawing.Point(576, 568);
+            this.lbOtherDateLabel.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbOtherDateLabel.Location = new System.Drawing.Point(586, 544);
             this.lbOtherDateLabel.Name = "lbOtherDateLabel";
-            this.lbOtherDateLabel.Size = new System.Drawing.Size(257, 45);
+            this.lbOtherDateLabel.Size = new System.Drawing.Size(215, 37);
             this.lbOtherDateLabel.TabIndex = 22;
             this.lbOtherDateLabel.Text = "Other date label:";
             // 
             // txtOtherDate
             // 
             this.txtOtherDate.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtOtherDate.Location = new System.Drawing.Point(839, 578);
+            this.txtOtherDate.Location = new System.Drawing.Point(811, 551);
             this.txtOtherDate.Name = "txtOtherDate";
             this.txtOtherDate.Size = new System.Drawing.Size(276, 35);
             this.txtOtherDate.TabIndex = 7;
@@ -301,17 +275,17 @@
             // lbNotes
             // 
             this.lbNotes.AutoSize = true;
-            this.lbNotes.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbNotes.Location = new System.Drawing.Point(803, 347);
+            this.lbNotes.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNotes.Location = new System.Drawing.Point(707, 330);
             this.lbNotes.Name = "lbNotes";
-            this.lbNotes.Size = new System.Drawing.Size(112, 45);
+            this.lbNotes.Size = new System.Drawing.Size(93, 37);
             this.lbNotes.TabIndex = 24;
             this.lbNotes.Text = "Notes:";
             // 
             // rtxtNotes
             // 
             this.rtxtNotes.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtxtNotes.Location = new System.Drawing.Point(811, 401);
+            this.rtxtNotes.Location = new System.Drawing.Point(810, 330);
             this.rtxtNotes.Name = "rtxtNotes";
             this.rtxtNotes.Size = new System.Drawing.Size(411, 99);
             this.rtxtNotes.TabIndex = 9;
@@ -330,10 +304,10 @@
             // 
             // btnSaveOnly
             // 
-            this.btnSaveOnly.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaveOnly.Location = new System.Drawing.Point(739, 13);
+            this.btnSaveOnly.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaveOnly.Location = new System.Drawing.Point(846, 37);
             this.btnSaveOnly.Name = "btnSaveOnly";
-            this.btnSaveOnly.Size = new System.Drawing.Size(150, 56);
+            this.btnSaveOnly.Size = new System.Drawing.Size(106, 41);
             this.btnSaveOnly.TabIndex = 11;
             this.btnSaveOnly.Text = "Save";
             this.btnSaveOnly.UseVisualStyleBackColor = true;
@@ -341,56 +315,31 @@
             // 
             // btnSaveAndReturn
             // 
-            this.btnSaveAndReturn.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaveAndReturn.Location = new System.Drawing.Point(739, 86);
+            this.btnSaveAndReturn.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaveAndReturn.Location = new System.Drawing.Point(846, 84);
             this.btnSaveAndReturn.Name = "btnSaveAndReturn";
-            this.btnSaveAndReturn.Size = new System.Drawing.Size(483, 56);
+            this.btnSaveAndReturn.Size = new System.Drawing.Size(376, 40);
             this.btnSaveAndReturn.TabIndex = 12;
             this.btnSaveAndReturn.Text = "Save and Return to Main Menu";
             this.btnSaveAndReturn.UseVisualStyleBackColor = true;
             this.btnSaveAndReturn.Click += new System.EventHandler(this.btnSaveAndReturn_Click);
             // 
-            // btnLogout
+            // btnExit
             // 
-            this.btnLogout.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogout.Location = new System.Drawing.Point(1083, 636);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(139, 56);
-            this.btnLogout.TabIndex = 27;
-            this.btnLogout.Text = "Logout";
-            this.btnLogout.UseVisualStyleBackColor = true;
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
-            // 
-            // btnReturnToMainMenu
-            // 
-            this.btnReturnToMainMenu.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReturnToMainMenu.Location = new System.Drawing.Point(895, 13);
-            this.btnReturnToMainMenu.Name = "btnReturnToMainMenu";
-            this.btnReturnToMainMenu.Size = new System.Drawing.Size(171, 56);
-            this.btnReturnToMainMenu.TabIndex = 28;
-            this.btnReturnToMainMenu.Text = "Main Menu";
-            this.btnReturnToMainMenu.UseVisualStyleBackColor = true;
-            this.btnReturnToMainMenu.Click += new System.EventHandler(this.btnReturnToMainMenu_Click);
-            // 
-            // btnNewForm
-            // 
-            this.btnNewForm.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNewForm.Location = new System.Drawing.Point(872, 636);
-            this.btnNewForm.Name = "btnNewForm";
-            this.btnNewForm.Size = new System.Drawing.Size(165, 56);
-            this.btnNewForm.TabIndex = 29;
-            this.btnNewForm.Text = "New form";
-            this.btnNewForm.UseVisualStyleBackColor = true;
-            this.btnNewForm.Click += new System.EventHandler(this.btnNewForm_Click);
+            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.Location = new System.Drawing.Point(958, 37);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(264, 41);
+            this.btnExit.TabIndex = 13;
+            this.btnExit.Text = "Exit to Main Menu";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // ContactView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1234, 711);
-            this.Controls.Add(this.btnNewForm);
-            this.Controls.Add(this.btnReturnToMainMenu);
-            this.Controls.Add(this.btnLogout);
+            this.ClientSize = new System.Drawing.Size(1234, 647);
             this.Controls.Add(this.btnSaveAndReturn);
             this.Controls.Add(this.btnSaveOnly);
             this.Controls.Add(this.lbTitle);
@@ -412,7 +361,6 @@
             this.Controls.Add(this.lbPhoneNumbers);
             this.Controls.Add(this.rtxtEmailAddresses);
             this.Controls.Add(this.lbEmailNumber);
-            this.Controls.Add(this.btnChangeContactImage);
             this.Controls.Add(this.lbEmail);
             this.Controls.Add(this.txtLName);
             this.Controls.Add(this.lbLName);
@@ -437,14 +385,12 @@
         private System.Windows.Forms.Label lbLName;
         private System.Windows.Forms.TextBox txtLName;
         private System.Windows.Forms.Label lbEmail;
-        private System.Windows.Forms.Button btnChangeContactImage;
         private System.Windows.Forms.Label lbEmailNumber;
         private System.Windows.Forms.RichTextBox rtxtEmailAddresses;
         private System.Windows.Forms.Label lbPhoneNumbersNumbers;
         private System.Windows.Forms.Label lbPhoneNumbers;
         private System.Windows.Forms.RichTextBox rtxtPhoneNumbers;
         private System.Windows.Forms.PictureBox pbSendMail;
-        private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label lbAddress;
         private System.Windows.Forms.Label lbAddressInfo;
         private System.Windows.Forms.RichTextBox rtxtAddress;
@@ -459,9 +405,7 @@
         private System.Windows.Forms.Label lbTitle;
         private System.Windows.Forms.Button btnSaveOnly;
         private System.Windows.Forms.Button btnSaveAndReturn;
-        private System.Windows.Forms.Button btnLogout;
-        private System.Windows.Forms.Button btnReturnToMainMenu;
-        private System.Windows.Forms.Button btnNewForm;
+        private System.Windows.Forms.Button btnExit;
     }
 }
 

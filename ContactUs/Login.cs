@@ -93,7 +93,7 @@ namespace ContactUs
                         if (userFound)
                         {
                             Hide();
-                            new ContactView().Show();
+                            new ContactList().Show();
 
                         }
                         else

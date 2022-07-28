@@ -279,6 +279,7 @@ namespace ContactUs
         string[] arrLine = new string [100];
         string absoluteRelativeID;
         string absoluteImageIcon;
+        string fullCurrentContact;
 
         private void LoadContact()
         {
@@ -322,6 +323,7 @@ namespace ContactUs
                                 txtOtherDate.Text = splitDetails[8];
                                 rtxtNotes.Text = splitDetails[9];
                                 rtxtAddress.Text = splitDetails[10];
+                                fullCurrentContact = splitDetails[0] + "~" + splitDetails[1] + "~" + splitDetails[2] + "~" + splitDetails[3] + "~" + splitDetails[4] + "~" + splitDetails[5] + "~" + splitDetails[6] + "~" + splitDetails[7] + "~" + splitDetails[8] + "~" + splitDetails[9] + "~" + splitDetails[10];
                             }
 
                         }
@@ -426,6 +428,51 @@ namespace ContactUs
 
             //MessageBox.Show(fileContent, "File Content at path: " + filePath, MessageBoxButtons.OK);
             //pbContactPicture.Image = fileContent;
+        }
+
+        private void rtxtNotes_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pbDeleteContact_Click(object sender, EventArgs e)
+        {
+            string userlinenumber = connect.clocal.userlinenumber.ToString();
+            var inDir = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+            string locationPath = ($@"{inDir}\ContactUsProgram");
+            string filePath = /*@*/$@"{locationPath}\contacts_{userlinenumber}.conf";/*\\*/
+            string fileName = filePath;
+            
+            if (MessageBox.Show("This will delete this contact from your list. This cannot be undone. Would you like to continue?", "WARNING!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                var tempFile = Path.GetTempFileName();
+                var linesToKeep = File.ReadLines(fileName).Where(l => l != fullCurrentContact);
+                string[] lineKeeping = new string[linesToKeep.Count()+1];
+
+                // Reassign the relative IDs of the other contacts
+                //Loop over each contact details
+                int ia = 0;
+                foreach (var contact in linesToKeep)
+                {
+                    //Get the contact info
+                    var splitDetails = contact.Split('~');
+                    //var unsplitDetails = new string[splitDetails.Length];
+                    splitDetails[0] = ia.ToString();
+                    lineKeeping[ia] = splitDetails[0] + "~" + splitDetails[1] + "~" + splitDetails[2] + "~" + splitDetails[3] + "~" + splitDetails[4] + "~" + splitDetails[5] + "~" + splitDetails[6] + "~" + splitDetails[7] + "~" + splitDetails[8] + "~" + splitDetails[9] + "~" + splitDetails[10];
+                    ia++;
+                }
+
+                File.WriteAllLines(tempFile, lineKeeping);
+
+                File.Delete(fileName);
+                File.Move(tempFile, fileName);
+
+                var lines = File.ReadAllLines(fileName).Where(arg => !string.IsNullOrWhiteSpace(arg));
+                File.WriteAllLines(fileName, lines);
+
+                Hide();
+                new ContactList().Show();
+            }
         }
     }
 }

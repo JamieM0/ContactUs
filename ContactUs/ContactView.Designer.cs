@@ -56,8 +56,10 @@
             this.btnSaveOnly = new System.Windows.Forms.Button();
             this.btnSaveAndReturn = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
+            this.pbDeleteContact = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbContactPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSendMail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbDeleteContact)).BeginInit();
             this.SuspendLayout();
             // 
             // lbFName
@@ -290,6 +292,7 @@
             this.rtxtNotes.Size = new System.Drawing.Size(411, 99);
             this.rtxtNotes.TabIndex = 9;
             this.rtxtNotes.Text = "";
+            this.rtxtNotes.TextChanged += new System.EventHandler(this.rtxtNotes_TextChanged);
             this.rtxtNotes.Leave += new System.EventHandler(this.rtxtNotes_Leave);
             // 
             // lbTitle
@@ -335,11 +338,23 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
+            // pbDeleteContact
+            // 
+            this.pbDeleteContact.Image = ((System.Drawing.Image)(resources.GetObject("pbDeleteContact.Image")));
+            this.pbDeleteContact.Location = new System.Drawing.Point(1131, 468);
+            this.pbDeleteContact.Name = "pbDeleteContact";
+            this.pbDeleteContact.Size = new System.Drawing.Size(64, 120);
+            this.pbDeleteContact.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbDeleteContact.TabIndex = 27;
+            this.pbDeleteContact.TabStop = false;
+            this.pbDeleteContact.Click += new System.EventHandler(this.pbDeleteContact_Click);
+            // 
             // ContactView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1234, 647);
+            this.Controls.Add(this.pbDeleteContact);
             this.Controls.Add(this.btnSaveAndReturn);
             this.Controls.Add(this.btnSaveOnly);
             this.Controls.Add(this.lbTitle);
@@ -372,6 +387,7 @@
             this.Load += new System.EventHandler(this.ContactView_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbContactPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSendMail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbDeleteContact)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -406,6 +422,7 @@
         private System.Windows.Forms.Button btnSaveOnly;
         private System.Windows.Forms.Button btnSaveAndReturn;
         private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.PictureBox pbDeleteContact;
     }
 }
 

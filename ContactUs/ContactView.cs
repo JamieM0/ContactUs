@@ -181,6 +181,7 @@ namespace ContactUs
             connect.clocal.selected_id = 0;
             SaveFull();
             IsSaved = false;
+            Hide();
             new ContactList().Show();
         }
 

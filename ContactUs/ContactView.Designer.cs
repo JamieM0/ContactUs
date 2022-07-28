@@ -143,6 +143,7 @@
             this.rtxtEmailAddresses.Size = new System.Drawing.Size(381, 112);
             this.rtxtEmailAddresses.TabIndex = 3;
             this.rtxtEmailAddresses.Text = "";
+            this.rtxtEmailAddresses.TextChanged += new System.EventHandler(this.rtxtEmailAddresses_TextChanged);
             this.rtxtEmailAddresses.Leave += new System.EventHandler(this.rtxtEmailAddresses_Leave);
             // 
             // lbPhoneNumbersNumbers
@@ -215,6 +216,7 @@
             this.rtxtAddress.Size = new System.Drawing.Size(411, 113);
             this.rtxtAddress.TabIndex = 8;
             this.rtxtAddress.Text = "";
+            this.rtxtAddress.TextChanged += new System.EventHandler(this.rtxtAddress_TextChanged);
             this.rtxtAddress.Leave += new System.EventHandler(this.rtxtAddress_Leave);
             // 
             // lbBirthdate
@@ -243,6 +245,7 @@
             this.dtpOtherDate.Name = "dtpOtherDate";
             this.dtpOtherDate.Size = new System.Drawing.Size(276, 35);
             this.dtpOtherDate.TabIndex = 6;
+            this.dtpOtherDate.ValueChanged += new System.EventHandler(this.dtpOtherDate_ValueChanged);
             this.dtpOtherDate.Leave += new System.EventHandler(this.dtpOtherDate_Leave);
             // 
             // lbOtherDate
@@ -272,6 +275,7 @@
             this.txtOtherDate.Name = "txtOtherDate";
             this.txtOtherDate.Size = new System.Drawing.Size(276, 35);
             this.txtOtherDate.TabIndex = 7;
+            this.txtOtherDate.TextChanged += new System.EventHandler(this.txtOtherDate_TextChanged);
             this.txtOtherDate.Leave += new System.EventHandler(this.txtOtherDate_Leave);
             // 
             // lbNotes

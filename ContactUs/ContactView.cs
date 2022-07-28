@@ -15,22 +15,15 @@ namespace ContactUs
     public partial class ContactView : Form
     {
         bool IsNewContact = true;
-        bool IsSaved = false;
+        bool IsSaved = true;
         
         public ContactView()
         {
             InitializeComponent();
             CenterToScreen();
-            //DialogResult dialogResult = MessageBox.Show("Load contact 1?", "Load contact 1?", MessageBoxButtons.YesNo);
-            //if (dialogResult == DialogResult.Yes)
-            //{
-            //    LoadContact();
-            //}
             LoadContact();
-            if (editingPreviousContact)
-            {
-                lbTitle.Text = $"{txtFName.Text} {txtLName.Text}";
-            }
+            titleUpdater();
+            IsSaved = true;
         }
 
         private void lbFName_Click(object sender, EventArgs e)
@@ -66,6 +59,12 @@ namespace ContactUs
                     //Hide();
                 }
             }
+            else
+            {
+                Hide();
+                new ContactList().Show();
+            }
+            
         }
 
         private void ContactView_Load(object sender, EventArgs e)
@@ -89,13 +88,11 @@ namespace ContactUs
             }
 
             titleUpdater();
-
-            IsSaved = false;
         }
 
         private void txtLName_TextChanged(object sender, EventArgs e)
         {
-            
+            IsSaved = false;
         }
 
         private void txtLName_Leave(object sender, EventArgs e)
@@ -107,8 +104,6 @@ namespace ContactUs
             }
 
             titleUpdater();
-            
-            IsSaved = false;
         }
 
         private void rtxtEmailAddresses_Leave(object sender, EventArgs e)
@@ -117,13 +112,11 @@ namespace ContactUs
             {
                 MessageBox.Show("The email you have entered is invalid, you can still continue if you like.", "Warning: Invalid Email");
             }
-
-            IsSaved = false;
         }
 
         private void rtxtPhoneNumbers_TextChanged(object sender, EventArgs e)
         {
-
+            IsSaved = false;
         }
 
         private void rtxtPhoneNumbers_Leave(object sender, EventArgs e)
@@ -132,12 +125,12 @@ namespace ContactUs
             //{
             //    MessageBox.Show("The email you have entered is invalid, you can still continue if you like.", "Warning: Invalid Email");
             //}
-            IsSaved = false;
+            
         }
 
         private void txtFName_TextChanged(object sender, EventArgs e)
         {
-
+            IsSaved = false;
         }
 
         private void titleUpdater()
@@ -173,14 +166,14 @@ namespace ContactUs
         private void btnSaveOnly_Click(object sender, EventArgs e)
         {
             SaveFull();
-            IsSaved = false;
+            IsSaved = true;
         }
 
         private void btnSaveAndReturn_Click(object sender, EventArgs e)
         {
             connect.clocal.selected_id = 0;
             SaveFull();
-            IsSaved = false;
+            IsSaved = true;
             Hide();
             new ContactList().Show();
         }
@@ -354,7 +347,7 @@ namespace ContactUs
 
         private void txtOtherDate_Leave(object sender, EventArgs e)
         {
-            IsSaved = false;
+            
         }
 
         private void dtpOtherDate_Leave(object sender, EventArgs e)
@@ -364,17 +357,17 @@ namespace ContactUs
 
         private void rtxtNotes_Leave(object sender, EventArgs e)
         {
-            IsSaved = false;
+
         }
 
         private void rtxtAddress_Leave(object sender, EventArgs e)
         {
-            IsSaved = false;
+
         }
 
         private void btnChangeContactImage_Leave(object sender, EventArgs e)
         {
-            IsSaved = false;
+
         }
 
         private void btnNewForm_Click(object sender, EventArgs e)
@@ -432,7 +425,7 @@ namespace ContactUs
 
         private void rtxtNotes_TextChanged(object sender, EventArgs e)
         {
-
+            IsSaved = false;
         }
 
         private void pbDeleteContact_Click(object sender, EventArgs e)
@@ -473,6 +466,26 @@ namespace ContactUs
                 Hide();
                 new ContactList().Show();
             }
+        }
+
+        private void rtxtEmailAddresses_TextChanged(object sender, EventArgs e)
+        {
+            IsSaved = false;
+        }
+
+        private void rtxtAddress_TextChanged(object sender, EventArgs e)
+        {
+            IsSaved = false;
+        }
+
+        private void dtpOtherDate_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtOtherDate_TextChanged(object sender, EventArgs e)
+        {
+            IsSaved = false;
         }
     }
 }

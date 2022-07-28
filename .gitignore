@@ -1,0 +1,4 @@
+*.jpg
+*.png
+!example.png
+*.gif

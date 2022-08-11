@@ -8,13 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Net.Mail;
 
 namespace ContactUs
 {
     public partial class ContactList : Form
     {
         int numbertotal = 0;
-        
+
         public ContactList()
         {
             InitializeComponent();
@@ -36,6 +37,13 @@ namespace ContactUs
             string filePath = /*@*/$@"{locationPath}\contacts_{userlinenumber}.conf";/*\\*/
             string fileName = filePath;
             string oldFiles = $@"{locationPath}\oldFiles.conf";
+
+            pnlContact_0.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+
+            pnlContactList.AutoScroll = true;
+
+            btnRemoveContacts.Visible = false;
+            btnDeleteAllContacts.Visible = false;
 
             if (!File.Exists(oldFiles))
             {
@@ -118,13 +126,15 @@ namespace ContactUs
         private void newPanel(int count, string firstName, string lastName, string emailAddress, string phoneNumber, string image)
         {
             Panel panel = new Panel();
-            if (count%2 == 0)
+            if (count % 2 == 0)
             {
                 panel.Location = new System.Drawing.Point(3, 3 + (155 * (count / 2)));
+                panel.Anchor = AnchorStyles.Top | AnchorStyles.Left;
             }
             else
             {
                 panel.Location = new System.Drawing.Point(627, 3 + (155 * (count / 2)));
+                panel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             }
             panel.Size = new System.Drawing.Size(580, 149);
             panel.Name = "pnlContact_" + (count);
@@ -149,21 +159,31 @@ namespace ContactUs
             labelFName.Click += new EventHandler(label_Click);
             panel.Controls.Add(labelFName);
 
+            Label labelPhoneNumber = new Label();
+
             Label labelEMail = new Label();
             labelEMail.Location = new System.Drawing.Point(151, 58);
             labelEMail.Name = "emailAddress_" + (count);
             labelEMail.Size = new System.Drawing.Size(295, 25);
             labelEMail.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular);
-            labelEMail.Text = emailAddress;
+            if(emailAddress != "")
+            {
+                labelEMail.Text = emailAddress;
+                labelPhoneNumber.Text = phoneNumber;
+            }
+            else
+            {
+                labelEMail.Text = phoneNumber;
+            }
             labelEMail.Click += new EventHandler(label_Click);
             panel.Controls.Add(labelEMail);
 
-            Label labelPhoneNumber = new Label();
+            
             labelPhoneNumber.Location = new System.Drawing.Point(151, 97);
             labelPhoneNumber.Name = "phoneNumber_" + (count);
             labelPhoneNumber.Size = new System.Drawing.Size(122, 25);
             labelPhoneNumber.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular);
-            labelPhoneNumber.Text = phoneNumber;
+            
             labelPhoneNumber.Click += new EventHandler(label_Click);
             panel.Controls.Add(labelPhoneNumber);
         }
@@ -228,11 +248,7 @@ namespace ContactUs
 
         private void emailAddress0_Click(object sender, EventArgs e)
         {
-            name = ((Label)sender).Name;
-
-            name_split = name.Split('_');
-
-            moveOn();
+            System.Diagnostics.Process.Start($"mailto:{emailAddress_0.Text}");
         }
 
         private void phoneNumber0_Click(object sender, EventArgs e)
@@ -323,6 +339,45 @@ namespace ContactUs
         {
             Hide();
             new Login().Show();
+        }
+
+        private void btnFunctions_MouseEnter(object sender, EventArgs e)
+        {
+            btnRemoveContacts.Visible = true;
+            btnDeleteAllContacts.Visible = true;
+        }
+
+        private void btnFunctions_MouseLeave(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnRemoveContacts_MouseEnter(object sender, EventArgs e)
+        {
+            btnRemoveContacts.Visible = true;
+            btnDeleteAllContacts.Visible = true;
+        }
+
+        private void btnRemoveContacts_MouseLeave(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnDeleteAllContacts_MouseEnter(object sender, EventArgs e)
+        {
+            btnRemoveContacts.Visible = true;
+            btnDeleteAllContacts.Visible = true;
+        }
+
+        private void btnDeleteAllContacts_MouseLeave(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void ContactList_MouseEnter(object sender, EventArgs e)
+        {
+            btnRemoveContacts.Visible = false;
+            btnDeleteAllContacts.Visible = false;
         }
     }
 }

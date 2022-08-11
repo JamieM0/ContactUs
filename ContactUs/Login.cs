@@ -37,6 +37,8 @@ namespace ContactUs
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            connect.clocal.user_pw = txtPassword.Text;
+
             if (txtPassword.Text == "" || txtUsername.Text == "")
             {
                 MessageBox.Show("Please enter a username and password to continue!", "No username or password entered", MessageBoxButtons.OK, MessageBoxIcon.Error);

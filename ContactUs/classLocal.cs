@@ -53,5 +53,9 @@ namespace ContactUs
 
         public int ID = 0;
         public int selected_id = 0;
+
+        public bool justSaved = false;
+
+        public string user_pw;
     }
 }

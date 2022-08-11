@@ -41,6 +41,7 @@
             this.btnDeleteAllContacts = new System.Windows.Forms.Button();
             this.btnRemoveContacts = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
+            this.btnFunctions = new System.Windows.Forms.Button();
             this.pnlContact_0.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_0)).BeginInit();
             this.pnlContactList.SuspendLayout();
@@ -117,29 +118,29 @@
             // pnlContactList
             // 
             this.pnlContactList.Controls.Add(this.pnlContact_0);
-            this.pnlContactList.Location = new System.Drawing.Point(12, 70);
+            this.pnlContactList.Location = new System.Drawing.Point(12, 47);
             this.pnlContactList.Name = "pnlContactList";
-            this.pnlContactList.Size = new System.Drawing.Size(1210, 629);
+            this.pnlContactList.Size = new System.Drawing.Size(1210, 652);
             this.pnlContactList.TabIndex = 1;
             this.pnlContactList.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlContactList_Paint);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Roboto", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(5, 9);
+            this.label1.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(8, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(217, 58);
+            this.label1.Size = new System.Drawing.Size(145, 38);
             this.label1.TabIndex = 2;
             this.label1.Text = "Contacts";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnAddContact
             // 
-            this.btnAddContact.Font = new System.Drawing.Font("Roboto", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddContact.Location = new System.Drawing.Point(1005, 9);
+            this.btnAddContact.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddContact.Location = new System.Drawing.Point(1080, 9);
             this.btnAddContact.Name = "btnAddContact";
-            this.btnAddContact.Size = new System.Drawing.Size(217, 52);
+            this.btnAddContact.Size = new System.Drawing.Size(142, 32);
             this.btnAddContact.TabIndex = 3;
             this.btnAddContact.Text = "Add Contact +";
             this.btnAddContact.UseVisualStyleBackColor = true;
@@ -147,51 +148,69 @@
             // 
             // btnDeleteAllContacts
             // 
-            this.btnDeleteAllContacts.Font = new System.Drawing.Font("Roboto", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteAllContacts.Location = new System.Drawing.Point(715, 9);
+            this.btnDeleteAllContacts.Font = new System.Drawing.Font("Roboto Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteAllContacts.Location = new System.Drawing.Point(885, 68);
             this.btnDeleteAllContacts.Name = "btnDeleteAllContacts";
-            this.btnDeleteAllContacts.Size = new System.Drawing.Size(284, 52);
+            this.btnDeleteAllContacts.Size = new System.Drawing.Size(189, 31);
             this.btnDeleteAllContacts.TabIndex = 4;
             this.btnDeleteAllContacts.Text = "Delete all contacts";
             this.btnDeleteAllContacts.UseVisualStyleBackColor = true;
             this.btnDeleteAllContacts.Click += new System.EventHandler(this.btnDeleteAllContacts_Click);
+            this.btnDeleteAllContacts.MouseEnter += new System.EventHandler(this.btnDeleteAllContacts_MouseEnter);
+            this.btnDeleteAllContacts.MouseLeave += new System.EventHandler(this.btnDeleteAllContacts_MouseLeave);
             // 
             // btnRemoveContacts
             // 
-            this.btnRemoveContacts.Font = new System.Drawing.Font("Roboto", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemoveContacts.Location = new System.Drawing.Point(474, 9);
+            this.btnRemoveContacts.Font = new System.Drawing.Font("Roboto Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoveContacts.Location = new System.Drawing.Point(885, 39);
             this.btnRemoveContacts.Name = "btnRemoveContacts";
-            this.btnRemoveContacts.Size = new System.Drawing.Size(235, 52);
+            this.btnRemoveContacts.Size = new System.Drawing.Size(189, 31);
             this.btnRemoveContacts.TabIndex = 5;
             this.btnRemoveContacts.Text = "Remove contacts";
             this.btnRemoveContacts.UseVisualStyleBackColor = true;
             this.btnRemoveContacts.Click += new System.EventHandler(this.btnRemoveContacts_Click);
+            this.btnRemoveContacts.MouseEnter += new System.EventHandler(this.btnRemoveContacts_MouseEnter);
+            this.btnRemoveContacts.MouseLeave += new System.EventHandler(this.btnRemoveContacts_MouseLeave);
             // 
             // btnLogout
             // 
-            this.btnLogout.Font = new System.Drawing.Font("Roboto", 20.25F);
-            this.btnLogout.Location = new System.Drawing.Point(329, 9);
+            this.btnLogout.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.Location = new System.Drawing.Point(733, 10);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(139, 52);
+            this.btnLogout.Size = new System.Drawing.Size(146, 31);
             this.btnLogout.TabIndex = 28;
             this.btnLogout.Text = "Logout";
             this.btnLogout.UseVisualStyleBackColor = true;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
+            // btnFunctions
+            // 
+            this.btnFunctions.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFunctions.Location = new System.Drawing.Point(885, 9);
+            this.btnFunctions.Name = "btnFunctions";
+            this.btnFunctions.Size = new System.Drawing.Size(189, 32);
+            this.btnFunctions.TabIndex = 29;
+            this.btnFunctions.Text = "Functions V";
+            this.btnFunctions.UseVisualStyleBackColor = true;
+            this.btnFunctions.MouseEnter += new System.EventHandler(this.btnFunctions_MouseEnter);
+            this.btnFunctions.MouseLeave += new System.EventHandler(this.btnFunctions_MouseLeave);
             // 
             // ContactList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1234, 711);
+            this.Controls.Add(this.btnFunctions);
+            this.Controls.Add(this.btnDeleteAllContacts);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.btnRemoveContacts);
-            this.Controls.Add(this.btnDeleteAllContacts);
             this.Controls.Add(this.btnAddContact);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pnlContactList);
             this.Name = "ContactList";
             this.Text = "Contact List";
             this.Load += new System.EventHandler(this.ContactList_Load);
+            this.MouseEnter += new System.EventHandler(this.ContactList_MouseEnter);
             this.pnlContact_0.ResumeLayout(false);
             this.pnlContact_0.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_0)).EndInit();
@@ -215,5 +234,6 @@
         private System.Windows.Forms.Button btnDeleteAllContacts;
         private System.Windows.Forms.Button btnRemoveContacts;
         private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.Button btnFunctions;
     }
 }

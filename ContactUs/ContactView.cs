@@ -38,7 +38,8 @@ namespace ContactUs
 
         private void pbSendMail_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start($"mailto:{rtxtEmailAddresses.Text}");
+            string email = rtxtEmailAddresses.Text.Split('\r')[0];
+            System.Diagnostics.Process.Start($"mailto:{email}");
         }
 
         private void btnExit_Click(object sender, EventArgs e)

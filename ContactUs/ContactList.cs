@@ -223,6 +223,7 @@ namespace ContactUs
         {
             numbertotal++;
             connect.clocal.ID = numbertotal;
+            connect.clocal.newContact = true;
 
             Hide();
             new ContactView().Show();
@@ -270,6 +271,7 @@ namespace ContactUs
             selected_id = Convert.ToInt32(name_split[1]) + 1;
 
             connect.clocal.selected_id = selected_id;
+            connect.clocal.newContact = false;
 
             Hide();
             new ContactView().Show();
@@ -343,8 +345,7 @@ namespace ContactUs
 
         private void btnFunctions_MouseEnter(object sender, EventArgs e)
         {
-            btnRemoveContacts.Visible = true;
-            btnDeleteAllContacts.Visible = true;
+            
         }
 
         private void btnFunctions_MouseLeave(object sender, EventArgs e)
@@ -354,8 +355,7 @@ namespace ContactUs
 
         private void btnRemoveContacts_MouseEnter(object sender, EventArgs e)
         {
-            btnRemoveContacts.Visible = true;
-            btnDeleteAllContacts.Visible = true;
+            
         }
 
         private void btnRemoveContacts_MouseLeave(object sender, EventArgs e)
@@ -365,8 +365,7 @@ namespace ContactUs
 
         private void btnDeleteAllContacts_MouseEnter(object sender, EventArgs e)
         {
-            btnRemoveContacts.Visible = true;
-            btnDeleteAllContacts.Visible = true;
+            
         }
 
         private void btnDeleteAllContacts_MouseLeave(object sender, EventArgs e)
@@ -376,8 +375,26 @@ namespace ContactUs
 
         private void ContactList_MouseEnter(object sender, EventArgs e)
         {
-            btnRemoveContacts.Visible = false;
-            btnDeleteAllContacts.Visible = false;
+            
+        }
+
+        private void btnFunctions_Click(object sender, EventArgs e)
+        {
+            if (!btnRemoveContacts.Visible)
+            {
+                btnRemoveContacts.Visible = true;
+                btnDeleteAllContacts.Visible = true;
+            }
+            else
+            {
+                btnRemoveContacts.Visible = false;
+                btnDeleteAllContacts.Visible = false;
+            }
+        }
+
+        private void pnlFunctionChecker_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

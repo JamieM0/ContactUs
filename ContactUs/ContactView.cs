@@ -289,7 +289,7 @@ namespace ContactUs
                 arrLine = File.ReadAllLines(fileName);
 
                 //Check if contacts exist in the conf file
-                if (allContacts.Length > 0)
+                if (allContacts.Length > 0 && !connect.clocal.newContact)
                 {
                     sid = connect.clocal.selected_id;
 

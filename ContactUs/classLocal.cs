@@ -57,5 +57,7 @@ namespace ContactUs
         public bool justSaved = false;
 
         public string user_pw;
+
+        public bool newContact = false;
     }
 }

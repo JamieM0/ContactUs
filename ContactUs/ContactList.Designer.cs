@@ -42,6 +42,7 @@
             this.btnRemoveContacts = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnFunctions = new System.Windows.Forms.Button();
+            this.pnlFunctionChecker = new System.Windows.Forms.Panel();
             this.pnlContact_0.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_0)).BeginInit();
             this.pnlContactList.SuspendLayout();
@@ -117,6 +118,8 @@
             // 
             // pnlContactList
             // 
+            this.pnlContactList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlContactList.Controls.Add(this.pnlContact_0);
             this.pnlContactList.Location = new System.Drawing.Point(12, 47);
             this.pnlContactList.Name = "pnlContactList";
@@ -127,17 +130,18 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(8, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(145, 38);
+            this.label1.Size = new System.Drawing.Size(144, 37);
             this.label1.TabIndex = 2;
             this.label1.Text = "Contacts";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnAddContact
             // 
-            this.btnAddContact.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddContact.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddContact.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddContact.Location = new System.Drawing.Point(1080, 9);
             this.btnAddContact.Name = "btnAddContact";
             this.btnAddContact.Size = new System.Drawing.Size(142, 32);
@@ -148,7 +152,8 @@
             // 
             // btnDeleteAllContacts
             // 
-            this.btnDeleteAllContacts.Font = new System.Drawing.Font("Roboto Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteAllContacts.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDeleteAllContacts.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteAllContacts.Location = new System.Drawing.Point(885, 68);
             this.btnDeleteAllContacts.Name = "btnDeleteAllContacts";
             this.btnDeleteAllContacts.Size = new System.Drawing.Size(189, 31);
@@ -161,7 +166,8 @@
             // 
             // btnRemoveContacts
             // 
-            this.btnRemoveContacts.Font = new System.Drawing.Font("Roboto Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoveContacts.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRemoveContacts.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRemoveContacts.Location = new System.Drawing.Point(885, 39);
             this.btnRemoveContacts.Name = "btnRemoveContacts";
             this.btnRemoveContacts.Size = new System.Drawing.Size(189, 31);
@@ -174,7 +180,8 @@
             // 
             // btnLogout
             // 
-            this.btnLogout.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogout.Location = new System.Drawing.Point(733, 10);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(146, 31);
@@ -185,15 +192,25 @@
             // 
             // btnFunctions
             // 
-            this.btnFunctions.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFunctions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFunctions.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFunctions.Location = new System.Drawing.Point(885, 9);
             this.btnFunctions.Name = "btnFunctions";
             this.btnFunctions.Size = new System.Drawing.Size(189, 32);
             this.btnFunctions.TabIndex = 29;
             this.btnFunctions.Text = "Functions V";
             this.btnFunctions.UseVisualStyleBackColor = true;
+            this.btnFunctions.Click += new System.EventHandler(this.btnFunctions_Click);
             this.btnFunctions.MouseEnter += new System.EventHandler(this.btnFunctions_MouseEnter);
             this.btnFunctions.MouseLeave += new System.EventHandler(this.btnFunctions_MouseLeave);
+            // 
+            // pnlFunctionChecker
+            // 
+            this.pnlFunctionChecker.Location = new System.Drawing.Point(885, 9);
+            this.pnlFunctionChecker.Name = "pnlFunctionChecker";
+            this.pnlFunctionChecker.Size = new System.Drawing.Size(189, 90);
+            this.pnlFunctionChecker.TabIndex = 30;
+            this.pnlFunctionChecker.Enter += new System.EventHandler(this.pnlFunctionChecker_Enter);
             // 
             // ContactList
             // 
@@ -207,6 +224,7 @@
             this.Controls.Add(this.btnAddContact);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pnlContactList);
+            this.Controls.Add(this.pnlFunctionChecker);
             this.Name = "ContactList";
             this.Text = "Contact List";
             this.Load += new System.EventHandler(this.ContactList_Load);
@@ -235,5 +253,6 @@
         private System.Windows.Forms.Button btnRemoveContacts;
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.Button btnFunctions;
+        private System.Windows.Forms.Panel pnlFunctionChecker;
     }
 }
